@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url]
 
 * Студент: [Виталий Власюк](https://up.htmlacademy.ru/javascript/14/user/575877).
-* Наставник: `Неизвестно`.
+* Наставник: `Виталий Усик`.
 
 ---
 
