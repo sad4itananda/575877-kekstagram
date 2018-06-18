@@ -1,35 +1,34 @@
-'use srict'
+'use strict';
 
 var template = document.querySelector('#picture').content.querySelector('a');
 var pictures = document.querySelector('.pictures');
-var bigPicture = document.querySelector('.big-picture');
 var parentComments = document.querySelector('.social__comments');
 var QUANTITY_OBJ = 25;
 
 var PHRASES_COMMENTS = ['Всё отлично!', 'В целом всё неплохо. Но не всё.',
-'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
+  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
+  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
+  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
+  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
 
 var PHRASES_DESCRIPTION = ['Тестим новую камеру!', 'Затусили с друзьями на море', 'Как же круто тут кормят',
-'Отдыхаем...', 'Цените каждое мгновенье. Цените тех, кто рядом с вами и отгоняйте все сомненья. Не обижайте всех словами......',
-'Вот это тачка!'];
+  'Отдыхаем...', 'Цените каждое мгновенье. Цените тех, кто рядом с вами и отгоняйте все сомненья. Не обижайте всех словами......',
+  'Вот это тачка!'];
 
 var getRandomInt = function (minIn, maxIn) {
   return Math.floor(Math.random() * (maxIn - minIn + 1)) + minIn;
 };
 
-var createElement = function(tag, className, text) {
+var createElement = function (tag, className, text) {
   var element = document.createElement(tag);
   element.classList.add(className);
-  if (text){
+  if (text) {
     element.textContent = text;
   }
   return element;
 };
 
-var addChild = function(child, parent) {
+var addChild = function (child, parent) {
   parent.appendChild(child);
 };
 
