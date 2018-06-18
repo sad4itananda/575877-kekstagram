@@ -4,13 +4,11 @@ var template = document.querySelector('#picture').content.querySelector('a');
 var pictures = document.querySelector('.pictures');
 var parentComments = document.querySelector('.social__comments');
 var QUANTITY_OBJ = 25;
-
 var PHRASES_COMMENTS = ['Всё отлично!', 'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
   'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
-
 var PHRASES_DESCRIPTION = ['Тестим новую камеру!', 'Затусили с друзьями на море', 'Как же круто тут кормят',
   'Отдыхаем...', 'Цените каждое мгновенье. Цените тех, кто рядом с вами и отгоняйте все сомненья. Не обижайте всех словами......',
   'Вот это тачка!'];
@@ -32,7 +30,7 @@ var addChild = function (child, parent) {
   parent.appendChild(child);
 };
 
-var getarrayUrl = function () {
+var getArrayUrl = function () {
   var array = [];
   for (var i = 0; i < QUANTITY_OBJ; i++) {
     array[i] = 'photos/' + (i + 1) + '.jpg';
@@ -40,11 +38,11 @@ var getarrayUrl = function () {
   return array;
 };
 
-var getarrayPhotosUsers = function () {
+var getArrayPhotosUsers = function () {
   var array = [];
   for (var i = 0; i < QUANTITY_OBJ; i++) {
     var obj = array[i] = {};
-    var URLS = getarrayUrl();
+    var URLS = getArrayUrl();
     var rdmLikes = getRandomInt(15, 200);
     var rdmPhrases = PHRASES_COMMENTS[getRandomInt(0, PHRASES_COMMENTS.length - 1)];
     var rdmPhrases2 = PHRASES_COMMENTS[getRandomInt(0, PHRASES_COMMENTS.length - 1)];
@@ -65,7 +63,7 @@ var showSetap = function () {
   document.querySelector('.social__loadmore').classList.add('visually-hidden');
 };
 
-var insTemplatePhotosUsers = function (array) {
+var insertTemplatePhotosUsers = function (array) {
   for (var i = 0; i < array.length; i++) {
     var element = template.cloneNode(true);
     element.querySelector('.picture__stat--likes').textContent = array[i].likes;
@@ -97,8 +95,8 @@ var getComment = function (array, i) {
 };
 
 var init = function () {
-  var photosUsers = getarrayPhotosUsers();
-  insTemplatePhotosUsers(photosUsers);
+  var photosUsers = getArrayPhotosUsers();
+  insertTemplatePhotosUsers(photosUsers);
   showSetap();
   setupBigPicture(photosUsers);
   for (var i = 0; i < photosUsers[0].comments.length; i++) {
