@@ -78,7 +78,7 @@ var insTemplatePhotosUsers = function (array) {
 var setupBigPicture = function (array) {
   document.querySelector('.big-picture__img').src = array[0].url;
   document.querySelector('.likes-count').textContent = array[0].likes;
-  document.querySelector('.comments-count').textContent = + array[0].comments.length;
+  document.querySelector('.comments-count').textContent = +array[0].comments.length;
   document.querySelector('.social__caption').textContent = array[0].description;
 };
 
