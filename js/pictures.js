@@ -1,13 +1,13 @@
 'use strict';
 
 var PHRASES_COMMENTS = ['Всё отлично!', 'В целом всё неплохо. Но не всё.',
-'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
+  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
+  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
+  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
+  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
 var PHRASES_DESCRIPTIONS = ['Тестим новую камеру!', 'Затусили с друзьями на море', 'Как же круто тут кормят',
-'Отдыхаем...', 'Цените каждое мгновенье. Цените тех, кто рядом с вами и отгоняйте все сомненья. Не обижайте всех словами......',
-'Вот это тачка!'];
+  'Отдыхаем...', 'Цените каждое мгновенье. Цените тех, кто рядом с вами и отгоняйте все сомненья. Не обижайте всех словами......',
+  'Вот это тачка!'];
 var LIKES_START_QUANTITY = 15;
 var LIKES_FINISH_QUANTITY = 200;
 var PHOTOS_COUNT = 25;
@@ -37,10 +37,10 @@ var generatePhotos = function () {
   for (var i = 0; i < PHOTOS_COUNT; i++) {
     var commentsQuantity = getRandomInteger(1, 2);
     array[i] = {
-      url : 'photos/' + (i + 1) + '.jpg',
-      likes : getRandomInteger(LIKES_START_QUANTITY, LIKES_FINISH_QUANTITY),
-      description : PHRASES_DESCRIPTIONS[getRandomInteger(0, PHRASES_DESCRIPTIONS.length - 1)],
-      comments : []
+      url: 'photos/' + (i + 1) + '.jpg',
+      likes: getRandomInteger(LIKES_START_QUANTITY, LIKES_FINISH_QUANTITY),
+      description: PHRASES_DESCRIPTIONS[getRandomInteger(0, PHRASES_DESCRIPTIONS.length - 1)],
+      comments: []
     };
     for (var j = 0; j < commentsQuantity; j++) {
       var randomPhrases = PHRASES_COMMENTS[getRandomInteger(0, PHRASES_COMMENTS.length - 1)];
