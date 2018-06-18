@@ -34,27 +34,27 @@ var addChild = function (child, parent) {
 
 var getarrayUrl = function () {
   var array = [];
-  for (var i = 0; i < QUANTITY_OBJ ; i++) {
+  for (var i = 0; i < QUANTITY_OBJ; i++) {
     array[i] = 'photos/' + (i + 1) + '.jpg';
   }
   return array;
 };
 
-var getarrayPhotosUsers  = function () {
+var getarrayPhotosUsers = function () {
   var array = [];
   for (var i = 0; i < QUANTITY_OBJ; i++) {
     var obj = array[i] = {};
     var URLS = getarrayUrl();
-    var rdmLikes = getRandomInt (15, 200);
+    var rdmLikes = getRandomInt(15, 200);
     var rdmPhrases = PHRASES_COMMENTS[getRandomInt(0, PHRASES_COMMENTS.length - 1)];
     var rdmPhrases2 = PHRASES_COMMENTS[getRandomInt(0, PHRASES_COMMENTS.length - 1)];
     obj.url = URLS[i];
     obj.likes = rdmLikes;
     obj.comments = [rdmPhrases];
-    if (getRandomInt(0,1)) {
+    if (getRandomInt(0, 1)) {
       obj.comments[1] = rdmPhrases2;
     }
-    obj.description =PHRASES_DESCRIPTION[getRandomInt(0, PHRASES_DESCRIPTION.length - 1)]; ;
+    obj.description = PHRASES_DESCRIPTION[getRandomInt(0, PHRASES_DESCRIPTION.length - 1)];
   }
   return array;
 };
@@ -68,41 +68,41 @@ var showSetap = function () {
 var insTemplatePhotosUsers = function (array) {
   for (var i = 0; i < array.length; i++) {
     var element = template.cloneNode(true);
-   element.querySelector('.picture__stat--likes').textContent = array[i].likes;
-   element.querySelector('.picture__stat--comments').textContent = array[i].comments;
-   element.querySelector('img').src = array[i].url;
+    element.querySelector('.picture__stat--likes').textContent = array[i].likes;
+    element.querySelector('.picture__stat--comments').textContent = array[i].comments;
+    element.querySelector('img').src = array[i].url;
     pictures.appendChild(element);
   }
 };
 
 var setupBigPicture = function (array) {
-  document.querySelector('.big-picture__img').src =  array[0].url;
-  document.querySelector('.likes-count').textContent  =  array[0].likes;
-  document.querySelector('.comments-count').textContent  =  + array[0].comments.length;
-  document.querySelector('.social__caption').textContent  =  array[0].description;
+  document.querySelector('.big-picture__img').src = array[0].url;
+  document.querySelector('.likes-count').textContent = array[0].likes;
+  document.querySelector('.comments-count').textContent = + array[0].comments.length;
+  document.querySelector('.social__caption').textContent = array[0].description;
 };
 
 var getComment = function (array, i) {
-  var parent = createElement('li', 'social__comment' );
+  var parent = createElement('li', 'social__comment');
   parent.classList.add('social__comment--text');
   var childImg = createElement('img', 'social__picture');
   childImg.src = 'img/avatar-' + getRandomInt(1, 6) + '.svg';
   childImg.alt = 'Аватар комментатора фотографии';
   childImg.width = '35';
   childImg.height = '35';
-  var childP = createElement('p', 'social__text',array[0].comments[i]);
+  var childP = createElement('p', 'social__text', array[0].comments[i]);
   addChild(childImg, parent);
   addChild(childP, parent);
   return parent;
 };
 
 var init = function () {
-  var  photosUsers  = getarrayPhotosUsers();
+  var photosUsers = getarrayPhotosUsers();
   insTemplatePhotosUsers(photosUsers);
   showSetap();
   setupBigPicture(photosUsers);
   for (var i = 0; i < photosUsers[0].comments.length; i++) {
-   addChild(getComment(photosUsers, i), parentComments);
+    addChild(getComment(photosUsers, i), parentComments);
   }
 };
 
