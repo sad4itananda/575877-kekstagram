@@ -125,36 +125,36 @@ var onDocumentKeydown = function (evt) {
 
 
 
-var onEffectsListClick = function(evt) {
+var onEffectsListClick = function (evt) {
   switch (evt.target.id) {
     case 'effect-none':
     // imgUploadScale.classList.add('hidden');
     // по тз шкала пропадает , это работает но покая это скрыл.
-    break;
+      break;
     case 'effect-chrome':
-    imgUploadPreview.style.cssText = '';
-    imgUploadPreview.style.filter = 'grayscale(' + (scaleValue / VALUE_MAX) + ')';
-    console.log(imgUploadPreview.style.filter);
+      imgUploadPreview.style.cssText = '';
+      imgUploadPreview.style.filter = 'grayscale(' + (scaleValue / VALUE_MAX) + ')';
+      console.log(imgUploadPreview.style.filter);
     break;
-    case 'effect-sepia':
-    imgUploadPreview.style.cssText = '';
-    imgUploadPreview.style.filter = 'sepia(' + (scaleValue / VALUE_MAX) + ')';
-    console.log(imgUploadPreview.style.filter);
+      case 'effect-sepia':
+      imgUploadPreview.style.cssText = '';
+      imgUploadPreview.style.filter = 'sepia(' + (scaleValue / VALUE_MAX) + ')';
+      console.log(imgUploadPreview.style.filter);
     break;
-    case 'effect-marvin':
-    imgUploadPreview.style.cssText = '';
-    imgUploadPreview.style.filter = 'invert(' + scaleValue  + '%)';
-    console.log(imgUploadPreview.style.filter);
+      case 'effect-marvin':
+      imgUploadPreview.style.cssText = '';
+      imgUploadPreview.style.filter = 'invert(' + scaleValue  + '%)';
+      console.log(imgUploadPreview.style.filter);
     break;
-    case 'effect-phobos':
-    imgUploadPreview.style.cssText = '';
-    imgUploadPreview.style.filter = 'blur(' + (scaleValue / VALUE_MAX * 3) + 'px)';
-    console.log(imgUploadPreview.style.filter);
+      case 'effect-phobos':
+      imgUploadPreview.style.cssText = '';
+      imgUploadPreview.style.filter = 'blur(' + (scaleValue / VALUE_MAX * 3) + 'px)';
+      console.log(imgUploadPreview.style.filter);
     break;
-    case 'effect-heat':
-    imgUploadPreview.style.cssText = '';
-    imgUploadPreview.style.filter = 'brightness(' + (scaleValue / VALUE_MAX * 3) + ')';
-    console.log(imgUploadPreview.style.filter);
+      case 'effect-heat':
+      imgUploadPreview.style.cssText = '';
+      imgUploadPreview.style.filter = 'brightness(' + (scaleValue / VALUE_MAX * 3) + ')';
+      console.log(imgUploadPreview.style.filter);
     break;
   }
 };
