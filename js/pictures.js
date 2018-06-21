@@ -106,24 +106,24 @@ var scalePin = document.querySelector('.scale__pin');
 var scaleValue = document.querySelector('.scale__value').value;
 var effectsList = document.querySelector('.effects__list');
 var imgUploadPreview = document.querySelector('.img-upload__preview');
-var imgUploadScale = document.querySelector('.img-upload__scale');
-var pictures = document.querySelector('section, .pictures');
 var pictureCansel = document.querySelector('#picture-cancel');
 
-var  onUploadFormChange = function () {
+
+var onUploadFormChange = function () {
   document.querySelector('.img-upload__overlay')
-  .classList.remove('hidden')
+  .classList.remove('hidden');
 };
 var onButtonCancelFormClick = function () {
   document.querySelector('.img-upload__overlay')
-  .classList.add('hidden')
+  .classList.add('hidden');
 };
-var  onDocumentKeydown = function(evt) {
+var onDocumentKeydown = function (evt) {
   if (evt.keyCode === 27) {
     document.querySelector('.img-upload__overlay').classList.add('hidden');
   }
 };
-var onScalePinMouseup = function () {alert('rabotaet!')};
+
+
 
 var onEffectsListClick = function(evt) {
   switch (evt.target.id) {
@@ -133,12 +133,12 @@ var onEffectsListClick = function(evt) {
     break;
     case 'effect-chrome':
     imgUploadPreview.style.cssText = '';
-    imgUploadPreview.style.filter = 'grayscale(' + (scaleValue / VALUE_MAX)  + ')';
+    imgUploadPreview.style.filter = 'grayscale(' + (scaleValue / VALUE_MAX) + ')';
     console.log(imgUploadPreview.style.filter);
     break;
     case 'effect-sepia':
     imgUploadPreview.style.cssText = '';
-    imgUploadPreview.style.filter = 'sepia(' + (scaleValue / VALUE_MAX)  + ')';
+    imgUploadPreview.style.filter = 'sepia(' + (scaleValue / VALUE_MAX) + ')';
     console.log(imgUploadPreview.style.filter);
     break;
     case 'effect-marvin':
@@ -148,12 +148,12 @@ var onEffectsListClick = function(evt) {
     break;
     case 'effect-phobos':
     imgUploadPreview.style.cssText = '';
-    imgUploadPreview.style.filter = 'blur(' + (scaleValue / VALUE_MAX * 3)  + 'px)';
+    imgUploadPreview.style.filter = 'blur(' + (scaleValue / VALUE_MAX * 3) + 'px)';
     console.log(imgUploadPreview.style.filter);
     break;
     case 'effect-heat':
     imgUploadPreview.style.cssText = '';
-    imgUploadPreview.style.filter = 'brightness(' + (scaleValue / VALUE_MAX * 3)  + ')';
+    imgUploadPreview.style.filter = 'brightness(' + (scaleValue / VALUE_MAX * 3) + ')';
     console.log(imgUploadPreview.style.filter);
     break;
   }
