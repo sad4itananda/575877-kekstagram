@@ -142,22 +142,22 @@ var onEffectsListSelectorClick = function (evt) {
     case 'effect-sepia':
       imgUploadPreviewSelector.style.cssText = '';
       imgUploadPreviewSelector.style.filter = 'sepia(' + (scaleValue / VALUE_MAX) + ')';
-       imgUploadScaleSelector.classList.remove('hidden');
+      imgUploadScaleSelector.classList.remove('hidden');
       break;
     case 'effect-marvin':
       imgUploadPreviewSelector.style.cssText = '';
       imgUploadPreviewSelector.style.filter = 'invert(' + scaleValue + '%)';
-       imgUploadScaleSelector.classList.remove('hidden');
+      imgUploadScaleSelector.classList.remove('hidden');
       break;
     case 'effect-phobos':
       imgUploadPreviewSelector.style.cssText = '';
       imgUploadPreviewSelector.style.filter = 'blur(' + (scaleValue / VALUE_MAX * 3) + 'px)';
-       imgUploadScaleSelector.classList.remove('hidden');
+     imgUploadScaleSelector.classList.remove('hidden');
       break;
     case 'effect-heat':
       imgUploadPreviewSelector.style.cssText = '';
       imgUploadPreviewSelector.style.filter = 'brightness(' + (scaleValue / VALUE_MAX * 3) + ')';
-       imgUploadScaleSelector.classList.remove('hidden');
+     imgUploadScaleSelector.classList.remove('hidden');
       break;
   }
 };
