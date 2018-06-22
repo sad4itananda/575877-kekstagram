@@ -52,8 +52,11 @@ var generatePhotos = function () {
 
 var showBigPicture = function () {
   document.querySelector('.big-picture').classList.remove('hidden');
-  // document.querySelector('.social__comment-count').classList.add('visually-hidden');
-  // document.querySelector('.social__loadmore').classList.add('visually-hidden');
+};
+
+var hiddenElements = function () {
+  document.querySelector('.social__comment-count').classList.add('visually-hidden');
+  document.querySelector('.social__loadmore').classList.add('visually-hidden');
 };
 
 var renderPhotos = function (array) {
@@ -62,6 +65,7 @@ var renderPhotos = function (array) {
     element.querySelector('.picture__stat--likes').textContent = array[i].likes;
     element.querySelector('.picture__stat--comments').textContent = array[i].comments;
     element.querySelector('img').src = array[i].url;
+    element.querySelector('img').setAttribute('data-id', i);
     picturesSelector.appendChild(element);
   }
 };
@@ -89,90 +93,97 @@ var getComment = function (element) {
   }
 };
 
+var photos = generatePhotos();
+
 var init = function () {
-  var photos = generatePhotos();
   renderPhotos(photos);
-  // showBigPicture();
-  initBigPictureData(photos[0]);
-  getComment(photos[0]);
+  hiddenElements();
 };
 
 init();
 // --------------------events-block------------------------------------------------
 var VALUE_MAX = 100;
-var uploadForm = document.querySelector('#upload-file');
-var buttonCancelForm = document.querySelector('#upload-cancel');
-var scalePin = document.querySelector('.scale__pin');
+var ESC_KEYCODE = 27;
+var uploadFormSelector = document.querySelector('#upload-file');
+var buttonCancelFormSelector = document.querySelector('#upload-cancel');
+// var scalePinSelector = document.querySelector('.scale__pin');
 var scaleValue = document.querySelector('.scale__value').value;
-var effectsList = document.querySelector('.effects__list');
-var imgUploadPreview = document.querySelector('.img-upload__preview');
-var pictureCansel = document.querySelector('#picture-cancel');
+var effectsListSelector = document.querySelector('.effects__list');
+var imgUploadPreviewSelector = document.querySelector('.img-upload__preview');
+var pictureCanselSelector = document.querySelector('#picture-cancel');
+var imgUploadScaleSelector = document.querySelector('.img-upload__scale');
 
-
-var onUploadFormChange = function () {
+var onUploadFormSelectorChange = function () {
   document.querySelector('.img-upload__overlay')
   .classList.remove('hidden');
 };
-var onButtonCancelFormClick = function () {
+
+var onButtonCancelFormSelectorClick = function () {
   document.querySelector('.img-upload__overlay')
   .classList.add('hidden');
 };
+
 var onDocumentKeydown = function (evt) {
-  if (evt.keyCode === 27) {
+  if (evt.keyCode === ESC_KEYCODE) {
     document.querySelector('.img-upload__overlay').classList.add('hidden');
   }
 };
 
-var onEffectsListClick = function (evt) {
+var onEffectsListSelectorClick = function (evt) {
   switch (evt.target.id) {
     case 'effect-none':
-    // imgUploadScale.classList.add('hidden');
-    // по тз шкала пропадает , это работает но покая это скрыл.
+      imgUploadScale.classList.add('hidden');
       break;
     case 'effect-chrome':
       imgUploadPreview.style.cssText = '';
       imgUploadPreview.style.filter = 'grayscale(' + (scaleValue / VALUE_MAX) + ')';
-      console.log(imgUploadPreview.style.filter);
+      imgUploadScale.classList.remove('hidden');
       break;
     case 'effect-sepia':
       imgUploadPreview.style.cssText = '';
       imgUploadPreview.style.filter = 'sepia(' + (scaleValue / VALUE_MAX) + ')';
-      console.log(imgUploadPreview.style.filter);
+       imgUploadScale.classList.remove('hidden');
       break;
     case 'effect-marvin':
       imgUploadPreview.style.cssText = '';
       imgUploadPreview.style.filter = 'invert(' + scaleValue + '%)';
-      console.log(imgUploadPreview.style.filter);
+       imgUploadScale.classList.remove('hidden');
       break;
     case 'effect-phobos':
       imgUploadPreview.style.cssText = '';
       imgUploadPreview.style.filter = 'blur(' + (scaleValue / VALUE_MAX * 3) + 'px)';
-      console.log(imgUploadPreview.style.filter);
+       imgUploadScale.classList.remove('hidden');
       break;
     case 'effect-heat':
       imgUploadPreview.style.cssText = '';
       imgUploadPreview.style.filter = 'brightness(' + (scaleValue / VALUE_MAX * 3) + ')';
-      console.log(imgUploadPreview.style.filter);
+       imgUploadScale.classList.remove('hidden');
       break;
   }
 };
 
-var onDocumentPicturesClick = function (evt) {
+var onDocumentPicturesSelectorClick = function (evt) {
   if (evt.target.className === 'picture__img') {
-    showBigPicture();
-  }
+   var index = evt.target.getAttribute('data-id');
+   console.log(index);
+   console.log(evt.target);
+   document.querySelector('.big-picture__img img').src = photos[index].url;
+   showBigPicture();
+   initBigPictureData(photos[index]);
+   getComment(photos[index]);
+ }
 };
 
-var onPictureCanselClick = function () {
+var onPictureCanselSelectorClick = function () {
   document.querySelector('.big-picture')
   .classList.add('hidden');
 };
 
-pictureCansel.addEventListener('click', onPictureCanselClick);
-uploadForm.addEventListener('change', onUploadFormChange);
-buttonCancelForm.addEventListener('click', onButtonCancelFormClick);
+pictureCanselSelector.addEventListener('click', onPictureCanselSelectorClick);
+uploadFormSelector.addEventListener('change', onUploadFormSelectorChange);
+buttonCancelFormSelector.addEventListener('click', onButtonCancelFormSelectorClick);
 document.addEventListener('keydown', onDocumentKeydown);
 // scalePin.addEventListener('mouseup', onScalePinMouseup);
-effectsList.addEventListener('click', onEffectsListClick);
-document.addEventListener('click', onDocumentPicturesClick);
+effectsListSelector.addEventListener('click', onEffectsListSelectorClick);
+document.addEventListener('click', onDocumentPicturesSelectorClick);
 
