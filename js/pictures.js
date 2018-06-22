@@ -109,9 +109,9 @@ var buttonCancelFormSelector = document.querySelector('#upload-cancel');
 // var scalePinSelector = document.querySelector('.scale__pin');
 var scaleValue = document.querySelector('.scale__value').value;
 var effectsListSelector = document.querySelector('.effects__list');
-var imgUploadPreviewSelectorSelector = document.querySelector('.img-upload__preview');
+var imgUploadPreviewSelector = document.querySelector('.img-upload__preview');
 var pictureCanselSelector = document.querySelector('#picture-cancel');
-var imgUploadScaleSelectorSelector = document.querySelector('.img-upload__scale');
+var imgUploadScaleSelector = document.querySelector('.img-upload__scale');
 
 var onUploadFormSelectorChange = function () {
   document.querySelector('.img-upload__overlay')
@@ -165,13 +165,11 @@ var onEffectsListSelectorClick = function (evt) {
 var onDocumentPicturesSelectorClick = function (evt) {
   if (evt.target.className === 'picture__img') {
     var index = evt.target.getAttribute('data-id');
-    console.log(index);
-    console.log(evt.target);
     document.querySelector('.big-picture__img img').src = photos[index].url;
     showBigPicture();
     initBigPictureData(photos[index]);
     getComment(photos[index]);
- }
+  }
 };
 
 var onPictureCanselSelectorClick = function () {
