@@ -135,27 +135,27 @@ var onEffectsListSelectorClick = function (evt) {
       imgUploadScaleSelector.classList.add('hidden');
       break;
     case 'effect-chrome':
-      imgUploadPreviewSelector.style.cssText = '';
+      imgUploadPreviewSelector.classList.add('effects__preview--chrome');
       imgUploadPreviewSelector.style.filter = 'grayscale(' + (scaleValue / VALUE_MAX) + ')';
       imgUploadScaleSelector.classList.remove('hidden');
       break;
     case 'effect-sepia':
-      imgUploadPreviewSelector.style.cssText = '';
+      imgUploadPreviewSelector.classList.add('effects__preview--sepia') ;
       imgUploadPreviewSelector.style.filter = 'sepia(' + (scaleValue / VALUE_MAX) + ')';
       imgUploadScaleSelector.classList.remove('hidden');
       break;
     case 'effect-marvin':
-      imgUploadPreviewSelector.style.cssText = '';
+      imgUploadPreviewSelector.classList.add('effects__preview--marvin') ;
       imgUploadPreviewSelector.style.filter = 'invert(' + scaleValue + '%)';
       imgUploadScaleSelector.classList.remove('hidden');
       break;
     case 'effect-phobos':
-      imgUploadPreviewSelector.style.cssText = '';
+      imgUploadPreviewSelector.classList.add('effects__preview--phobos') ;
       imgUploadPreviewSelector.style.filter = 'blur(' + (scaleValue / VALUE_MAX * 3) + 'px)';
       imgUploadScaleSelector.classList.remove('hidden');
       break;
     case 'effect-heat':
-      imgUploadPreviewSelector.style.cssText = '';
+      imgUploadPreviewSelector.classList.add('effects__preview--heat') ;
       imgUploadPreviewSelector.style.filter = 'brightness(' + (scaleValue / VALUE_MAX * 3) + ')';
       imgUploadScaleSelector.classList.remove('hidden');
       break;
@@ -177,11 +177,17 @@ var onPictureCanselSelectorClick = function () {
   .classList.add('hidden');
 };
 
+var onDocumentKeydown = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    document.querySelector('.big-picture').classList.add('hidden');
+  }
+};
+
 pictureCanselSelector.addEventListener('click', onPictureCanselSelectorClick);
 uploadFormSelector.addEventListener('change', onUploadFormSelectorChange);
 buttonCancelFormSelector.addEventListener('click', onButtonCancelFormSelectorClick);
 document.addEventListener('keydown', onDocumentKeydown);
-// scalePin.addEventListener('mouseup', onScalePinMouseup);
+// scalePinSelector.addEventListener('mouseup', onScalePinMouseup);
 effectsListSelector.addEventListener('click', onEffectsListSelectorClick);
 document.addEventListener('click', onDocumentPicturesSelectorClick);
 
