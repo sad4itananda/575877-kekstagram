@@ -126,6 +126,7 @@ var onButtonCancelFormSelectorClick = function () {
 var onDocumentKeydown = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
     document.querySelector('.img-upload__overlay').classList.add('hidden');
+    document.querySelector('.big-picture').classList.add('hidden');
   }
 };
 
@@ -140,22 +141,22 @@ var onEffectsListSelectorClick = function (evt) {
       imgUploadScaleSelector.classList.remove('hidden');
       break;
     case 'effect-sepia':
-      imgUploadPreviewSelector.classList.add('effects__preview--sepia') ;
+      imgUploadPreviewSelector.classList.add('effects__preview--sepia');
       imgUploadPreviewSelector.style.filter = 'sepia(' + (scaleValue / VALUE_MAX) + ')';
       imgUploadScaleSelector.classList.remove('hidden');
       break;
     case 'effect-marvin':
-      imgUploadPreviewSelector.classList.add('effects__preview--marvin') ;
+      imgUploadPreviewSelector.classList.add('effects__preview--marvin');
       imgUploadPreviewSelector.style.filter = 'invert(' + scaleValue + '%)';
       imgUploadScaleSelector.classList.remove('hidden');
       break;
     case 'effect-phobos':
-      imgUploadPreviewSelector.classList.add('effects__preview--phobos') ;
+      imgUploadPreviewSelector.classList.add('effects__preview--phobos');
       imgUploadPreviewSelector.style.filter = 'blur(' + (scaleValue / VALUE_MAX * 3) + 'px)';
       imgUploadScaleSelector.classList.remove('hidden');
       break;
     case 'effect-heat':
-      imgUploadPreviewSelector.classList.add('effects__preview--heat') ;
+      imgUploadPreviewSelector.classList.add('effects__preview--heat');
       imgUploadPreviewSelector.style.filter = 'brightness(' + (scaleValue / VALUE_MAX * 3) + ')';
       imgUploadScaleSelector.classList.remove('hidden');
       break;
@@ -175,12 +176,6 @@ var onDocumentPicturesSelectorClick = function (evt) {
 var onPictureCanselSelectorClick = function () {
   document.querySelector('.big-picture')
   .classList.add('hidden');
-};
-
-var onDocumentKeydown = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE) {
-    document.querySelector('.big-picture').classList.add('hidden');
-  }
 };
 
 pictureCanselSelector.addEventListener('click', onPictureCanselSelectorClick);
