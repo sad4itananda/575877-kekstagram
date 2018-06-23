@@ -101,7 +101,9 @@ var init = function () {
 };
 
 init();
+
 // --------------------events-block------------------------------------------------
+
 var VALUE_MAX = 100;
 var ESC_KEYCODE = 27;
 var uploadFormSelector = document.querySelector('#upload-file');
@@ -185,4 +187,32 @@ document.addEventListener('keydown', onDocumentKeydown);
 // scalePinSelector.addEventListener('mouseup', onScalePinMouseup);
 effectsListSelector.addEventListener('click', onEffectsListSelectorClick);
 document.addEventListener('click', onDocumentPicturesSelectorClick);
+
+// --------------------------resize-picture------------------------------------
+
+var MIN_SIZE_PICTURE = 25;
+var MAX_SIZE_PICTURE = 100;
+var resizeMinusSelector = document.querySelector('.resize__control--minus');
+var resizePlusSelector = document.querySelector('.resize__control--plus');
+var resizeValueSelector = document.querySelector('.resize__control--value');
+var valueResize = resizeValueSelector.value = MAX_SIZE_PICTURE;
+
+var onResizeMinusSelectorClick = function () {
+  if (valueResize !== MIN_SIZE_PICTURE) {
+    valueResize -= 25;
+    resizeValueSelector.value = valueResize;
+    imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
+  }
+};
+
+var onResizePlusSelectorClick = function () {
+  if (valueResize !== MAX_SIZE_PICTURE) {
+    valueResize += 25;
+    resizeValueSelector.value = valueResize;
+    imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
+  }
+};
+
+resizeMinusSelector.addEventListener('click', onResizeMinusSelectorClick);
+resizePlusSelector.addEventListener('click', onResizePlusSelectorClick);
 
