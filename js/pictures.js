@@ -217,11 +217,9 @@ resizeMinusSelector.addEventListener('click', onResizeMinusSelectorClick);
 resizePlusSelector.addEventListener('click', onResizePlusSelectorClick);
 
 // -------------------------form-submission------------------------------------
-var formDataSelector = document.querySelector('#upload-select-image');
 var hashTagSelector = document.querySelector('.text__hashtags');
-var submitSelector = document.querySelector('#upload-submit');
 
-hashTagSelector.addEventListener('change', function(evt) {
+hashTagSelector.addEventListener('change', function (evt) {
   // почемуто данные отправляються насервак, как сделать то бы не отправлялись?
   evt.preventDefault();
 
@@ -230,18 +228,18 @@ hashTagSelector.addEventListener('change', function(evt) {
   console.log(hashTagSelector.value);
 // проверка что бы хештеги были прописаны отдельно (через пробелы)
 for (var i = 1 ; i < hashTagSelector.value.length; i++) {
-  if  ((hashTagSelector.value[i] === '#') && (hashTagSelector.value[i -1] !== ' ')) {
-   hashTagSelector.setCustomValidity('хэш-теги разделяются пробелами!');
- } else {
-   hashTagSelector.setCustomValidity('');
- }
+  if ((hashTagSelector.value[i] === '#') && (hashTagSelector.value[i -1] !== ' ')) {
+    hashTagSelector.setCustomValidity('хэш-теги разделяются пробелами!');
+  } else {
+    hashTagSelector.setCustomValidity('');
+  }
 };
 // остальная проверка на соответстиве пока не все пункты
 for (var j = 0; j < hashTagArray.length; j++ ) {
 
   if (hashTagArray[j].charAt(0) !== '#') {
-   hashTagSelector.setCustomValidity('Хеш тег должен начинаться с символа решетка: # ');
-   break;
+    hashTagSelector.setCustomValidity('Хеш тег должен начинаться с символа решетка: # ');
+    break;
  }
  else if (hashTagArray[0].length <= 1) {
   hashTagSelector.setCustomValidity('Хештег не может состоять из одного символа!');
@@ -255,16 +253,6 @@ else if (hashTagArray.length >= 5 ) {
   hashTagSelector.setCustomValidity('нельзя указать больше пяти хэш-тегов!');
 }
 };
-
-
-
-
-
-
-
-
-
-
 
 });
 // hashTagSelector.addEventListener('input', function(evt) {
