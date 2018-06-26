@@ -249,6 +249,4 @@ for (var j = 0; j < hashTagArray.length; j++ ) {
     hashTagSelector.setCustomValidity('нельзя указать больше пяти хэш-тегов!');
   }
 };
-  })
-
-
+})
