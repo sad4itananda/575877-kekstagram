@@ -236,50 +236,19 @@ for (var i = 1 ; i < hashTagSelector.value.length; i++) {
 };
 // остальная проверка на соответстиве пока не все пункты
 for (var j = 0; j < hashTagArray.length; j++ ) {
-
   if (hashTagArray[j].charAt(0) !== '#') {
     hashTagSelector.setCustomValidity('Хеш тег должен начинаться с символа решетка: # ');
-    break;
- }
- else if (hashTagArray[0].length <= 1) {
-  hashTagSelector.setCustomValidity('Хештег не может состоять из одного символа!');
-  break;
-}
-else if (hashTagArray.length >= 5 ) {
-  hashTagSelector.setCustomValidity('нельзя указывать более пяти хэш-тегов!');
-  break;
-}
-else if (hashTagArray.length >= 5 ) {
-  hashTagSelector.setCustomValidity('нельзя указать больше пяти хэш-тегов!');
-}
+  }
+  else if (hashTagArray[0].length <= 1) {
+    hashTagSelector.setCustomValidity('Хештег не может состоять из одного символа!');
+  }
+  else if (hashTagArray.length >= 5 ) {
+    hashTagSelector.setCustomValidity('нельзя указывать более пяти хэш-тегов!');
+  }
+  else if (hashTagArray.length >= 5 ) {
+    hashTagSelector.setCustomValidity('нельзя указать больше пяти хэш-тегов!');
+  }
 };
+  })
 
-});
-// hashTagSelector.addEventListener('input', function(evt) {
-//   var hashTagArray = hashTagSelector.value.split(' ');
-
-//   for (var i = 1 ; i < hashTagSelector.value.length; i++) {
-//     if  ((hashTagSelector.value[i] === '#') && (hashTagSelector.value[i -1] !== ' ')) {
-//      hashTagSelector.setCustomValidity('хэш-теги разделяются пробелами!');
-//    }
-//    break;
-//   };
-//   for (var j = 0; j < hashTagArray.length; j++ ) {
-//     if (hashTagArray[j].charAt(0) !== '#') {
-//      hashTagSelector.setCustomValidity('Хеш тег должен начинаться с символа решетка: # ');
-//     break;
-//     }
-//     else if (hashTagArray[0].length <= 1) {
-//     hashTagSelector.setCustomValidity('Хештег не может состоять из одного символа!');
-//     break;
-//     }
-//     else if (hashTagArray.length >= 5 ) {
-//     hashTagSelector.setCustomValidity('нельзя указывать более пяти хэш-тегов!');
-//     break;
-//     }
-//     // else if (hashTagArray.length >= 5 ) {
-//     // hashTagSelector.setCustomValidity('нельзя указать больше пяти хэш-тегов!');
-//     // }
-//   }
-// });
 
