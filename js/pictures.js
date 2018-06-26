@@ -222,31 +222,28 @@ var hashTagSelector = document.querySelector('.text__hashtags');
 hashTagSelector.addEventListener('change', function (evt) {
   // почемуто данные отправляються насервак, как сделать то бы не отправлялись?
   evt.preventDefault();
-
   var hashTagArray = hashTagSelector.value.split(' ');
-  console.log('hashTagArray', hashTagArray);
-  console.log(hashTagSelector.value);
 // проверка что бы хештеги были прописаны отдельно (через пробелы)
-for (var i = 1 ; i < hashTagSelector.value.length; i++) {
-  if ((hashTagSelector.value[i] === '#') && (hashTagSelector.value[i -1] !== ' ')) {
-    hashTagSelector.setCustomValidity('хэш-теги разделяются пробелами!');
-  } else {
-    hashTagSelector.setCustomValidity('');
+  for (var i = 1 ; i < hashTagSelector.value.length; i++) {
+    if ((hashTagSelector.value[i] === '#') && (hashTagSelector.value[i -1] !== ' ')) {
+      hashTagSelector.setCustomValidity('хэш-теги разделяются пробелами!');
+    } else {
+      hashTagSelector.setCustomValidity('');
+    }
   }
-};
 // остальная проверка на соответстиве пока не все пункты
-for (var j = 0; j < hashTagArray.length; j++ ) {
-  if (hashTagArray[j].charAt(0) !== '#') {
-    hashTagSelector.setCustomValidity('Хеш тег должен начинаться с символа решетка: # ');
+  for (var j = 0; j < hashTagArray.length; j++ ) {
+    if (hashTagArray[j].charAt(0) !== '#') {
+      hashTagSelector.setCustomValidity('Хеш тег должен начинаться с символа решетка: # ');
+    }
+    else if (hashTagArray[0].length <= 1) {
+      hashTagSelector.setCustomValidity('Хештег не может состоять из одного символа!');
+    }
+    else if (hashTagArray.length >= 5 ) {
+      hashTagSelector.setCustomValidity('нельзя указывать более пяти хэш-тегов!');
+    }
+    else if (hashTagArray.length >= 5 ) {
+      hashTagSelector.setCustomValidity('нельзя указать больше пяти хэш-тегов!');
+    }
   }
-  else if (hashTagArray[0].length <= 1) {
-    hashTagSelector.setCustomValidity('Хештег не может состоять из одного символа!');
-  }
-  else if (hashTagArray.length >= 5 ) {
-    hashTagSelector.setCustomValidity('нельзя указывать более пяти хэш-тегов!');
-  }
-  else if (hashTagArray.length >= 5 ) {
-    hashTagSelector.setCustomValidity('нельзя указать больше пяти хэш-тегов!');
-  }
-};
-})
+});
