@@ -225,13 +225,13 @@ hashTagSelector.addEventListener('change', function (evt) {
   var hashTagArray = evt.target.value.split(' ');
   evt.target.setCustomValidity('');
 
-  if (hashTagArray.length > limitHashTags ) {
+  if (hashTagArray.length > limitHashTags) {
     evt.target.setCustomValidity('Нельзя использовать более 5 хештегов!');
     return;
-  };
+  }
 
-  for (var i = 0; i < hashTagArray.length; i++ ) {
-    for (var j = 1; j < hashTagArray[i].length; j++ ) {
+  for (var i = 0; i < hashTagArray.length; i++) {
+    for (var j = 1; j < hashTagArray[i].length; j++) {
       if (hashTagArray[i].charAt(j) === '#') {
         evt.target.setCustomValidity('Хеш тег не может внутри себя содержать символ решетка: #');
         return;
@@ -246,12 +246,12 @@ hashTagSelector.addEventListener('change', function (evt) {
     } else if (hashTagArray[i].length > MAX_HASHTAG_SYMBOLS) {
       evt.target.setCustomValidity('Хештег не может быть длиннее 20 символов!');
       return;
-    }else if (hashTagArray[i].length > MAX_HASHTAG_SYMBOLS) {
+    } else if (hashTagArray[i].length > MAX_HASHTAG_SYMBOLS) {
       evt.target.setCustomValidity('Хештег не может быть длиннее 20 символов!');
       return;
-    }else
-    var elem = hashTagArray[i];
-    for (var k = i+1; k < hashTagArray.length; k ++) {
+    } else
+      var elem = hashTagArray[i];
+    for (var k = i + 1; k < hashTagArray.length; k++) {
       if (elem === hashTagArray[k]) {
         evt.target.setCustomValidity('нельзя использовать два одинаковых хештега');
         return;
