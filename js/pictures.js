@@ -250,7 +250,7 @@ hashTagSelector.addEventListener('change', function (evt) {
       evt.target.setCustomValidity('Хештег не может быть длиннее 20 символов!');
       return;
     }
-      var elem = hashTagArray[i];
+    var elem = hashTagArray[i];
     for (var k = i + 1; k < hashTagArray.length; k++) {
       if (elem === hashTagArray[k]) {
         evt.target.setCustomValidity('нельзя использовать два одинаковых хештега');
