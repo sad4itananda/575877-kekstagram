@@ -249,7 +249,7 @@ hashTagSelector.addEventListener('change', function (evt) {
     } else if (hashTagArray[i].length > MAX_HASHTAG_SYMBOLS) {
       evt.target.setCustomValidity('Хештег не может быть длиннее 20 символов!');
       return;
-    } else
+    }
       var elem = hashTagArray[i];
     for (var k = i + 1; k < hashTagArray.length; k++) {
       if (elem === hashTagArray[k]) {
