@@ -218,23 +218,18 @@ resizeMinusSelector.addEventListener('click', onResizeMinusSelectorClick);
 resizePlusSelector.addEventListener('click', onResizePlusSelectorClick);
 
 // -------------------------form-submission------------------------------------
-var limitHashTags = 5;
+var LIMIT_HASH_TAGS = 5;
 var hashTagSelector = document.querySelector('.text__hashtags');
 
 hashTagSelector.addEventListener('change', function (evt) {
   var hashTagArray = (evt.target.value.toLowerCase()).split(' ');
   evt.target.setCustomValidity('');
-  for (var l = 0; l < hashTagArray.length; l++) {
-    if (hashTagArray[l] === '') {
+
+  for (var i = 0; i < hashTagArray.length; i++) {
+    if (hashTagArray[i] === '') {
       evt.target.setCustomValidity('между хештегами должен быть один пробел!');
       return;
     }
-  }
-  if (hashTagArray.length > limitHashTags) {
-    evt.target.setCustomValidity('Нельзя использовать более 5 хештегов!');
-    return;
-  }
-  for (var i = 0; i < hashTagArray.length; i++) {
     for (var j = 1; j < hashTagArray[i].length; j++) {
       if (hashTagArray[i].charAt(j) === '#') {
         evt.target.setCustomValidity('Хеш тег не может внутри себя содержать символ решетка: #');
@@ -244,10 +239,12 @@ hashTagSelector.addEventListener('change', function (evt) {
     if (hashTagArray[i].charAt(0) !== '#') {
       evt.target.setCustomValidity('Хеш тег должен начинаться с символа решетка: #');
       return;
-    } else if (hashTagArray[i] === '#') {
+    }
+    if (hashTagArray[i] === '#') {
       evt.target.setCustomValidity('Хештег не может состоять из одной #!');
       return;
-    } else if (hashTagArray[i].length > MAX_HASHTAG_SYMBOLS) {
+    }
+    if (hashTagArray[i].length > MAX_HASHTAG_SYMBOLS) {
       evt.target.setCustomValidity('Хештег не может быть длиннее 20 символов!');
       return;
     }
@@ -258,5 +255,9 @@ hashTagSelector.addEventListener('change', function (evt) {
         return;
       }
     }
+  }
+  if (hashTagArray.length > LIMIT_HASH_TAGS) {
+    evt.target.setCustomValidity('Нельзя использовать более 5 хештегов!');
+    return;
   }
 });
