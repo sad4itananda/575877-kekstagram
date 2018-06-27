@@ -222,14 +222,19 @@ var limitHashTags = 5;
 var hashTagSelector = document.querySelector('.text__hashtags');
 
 hashTagSelector.addEventListener('change', function (evt) {
-  var hashTagArray = evt.target.value.split(' ');
+  var hashTagArray = (evt.target.value.toLowerCase()).split(' ');
   evt.target.setCustomValidity('');
-
+console.log(hashTagArray);
+  for (var i = 0; i < hashTagArray.length; i++) {
+    if (hashTagArray[i] === '') {
+      evt.target.setCustomValidity('между хештегами должен быть один пробел!');
+      return;
+    }
+  }
   if (hashTagArray.length > limitHashTags) {
     evt.target.setCustomValidity('Нельзя использовать более 5 хештегов!');
     return;
   }
-
   for (var i = 0; i < hashTagArray.length; i++) {
     for (var j = 1; j < hashTagArray[i].length; j++) {
       if (hashTagArray[i].charAt(j) === '#') {
@@ -246,14 +251,11 @@ hashTagSelector.addEventListener('change', function (evt) {
     } else if (hashTagArray[i].length > MAX_HASHTAG_SYMBOLS) {
       evt.target.setCustomValidity('Хештег не может быть длиннее 20 символов!');
       return;
-    } else if (hashTagArray[i].length > MAX_HASHTAG_SYMBOLS) {
-      evt.target.setCustomValidity('Хештег не может быть длиннее 20 символов!');
-      return;
     }
     var elem = hashTagArray[i];
     for (var k = i + 1; k < hashTagArray.length; k++) {
       if (elem === hashTagArray[k]) {
-        evt.target.setCustomValidity('нельзя использовать два одинаковых хештега');
+        evt.target.setCustomValidity('нельзя использовать одинаковые хештеги!');
         return;
       }
     }
