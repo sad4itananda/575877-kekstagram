@@ -192,6 +192,7 @@ document.addEventListener('click', onDocumentPicturesSelectorClick);
 
 var MIN_SIZE_PICTURE = 25;
 var MAX_SIZE_PICTURE = 100;
+var MAX_HASHTAG_SYMBOLS = 20;
 var resizeMinusSelector = document.querySelector('.resize__control--minus');
 var resizePlusSelector = document.querySelector('.resize__control--plus');
 var resizeValueSelector = document.querySelector('.resize__control--value');
@@ -199,7 +200,7 @@ var valueResize = resizeValueSelector.value = MAX_SIZE_PICTURE;
 
 var onResizeMinusSelectorClick = function () {
   if (valueResize !== MIN_SIZE_PICTURE) {
-    valueResize -= 25;
+    valueResize -= MIN_SIZE_PICTURE;
     resizeValueSelector.value = valueResize;
     imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
   }
@@ -207,7 +208,7 @@ var onResizeMinusSelectorClick = function () {
 
 var onResizePlusSelectorClick = function () {
   if (valueResize !== MAX_SIZE_PICTURE) {
-    valueResize += 25;
+    valueResize += MIN_SIZE_PICTURE;
     resizeValueSelector.value = valueResize;
     imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
   }
@@ -217,33 +218,44 @@ resizeMinusSelector.addEventListener('click', onResizeMinusSelectorClick);
 resizePlusSelector.addEventListener('click', onResizePlusSelectorClick);
 
 // -------------------------form-submission------------------------------------
+var limitHashTags = 5;
 var hashTagSelector = document.querySelector('.text__hashtags');
 
 hashTagSelector.addEventListener('change', function (evt) {
-  // почемуто данные отправляються насервак, как сделать то бы не отправлялись?
-  evt.preventDefault();
-  var hashTagArray = hashTagSelector.value.split(' ');
-// проверка что бы хештеги были прописаны отдельно (через пробелы)
-  for (var i = 1 ; i < hashTagSelector.value.length; i++) {
-    if ((hashTagSelector.value[i] === '#') && (hashTagSelector.value[i -1] !== ' ')) {
-      hashTagSelector.setCustomValidity('хэш-теги разделяются пробелами!');
-    } else {
-      hashTagSelector.setCustomValidity('');
+  var hashTagArray = evt.target.value.split(' ');
+  evt.target.setCustomValidity('');
+
+  if (hashTagArray.length > limitHashTags ) {
+    evt.target.setCustomValidity('Нельзя использовать более 5 хештегов!');
+    return;
+  };
+
+  for (var i = 0; i < hashTagArray.length; i++ ) {
+    for (var j = 1; j < hashTagArray[i].length; j++ ) {
+      if (hashTagArray[i].charAt(j) === '#') {
+        evt.target.setCustomValidity('Хеш тег не может внутри себя содержать символ решетка: #');
+        return;
+      }
     }
-  }
-// остальная проверка на соответстиве пока не все пункты
-  for (var j = 0; j < hashTagArray.length; j++ ) {
-    if (hashTagArray[j].charAt(0) !== '#') {
-      hashTagSelector.setCustomValidity('Хеш тег должен начинаться с символа решетка: # ');
-    }
-    else if (hashTagArray[0].length <= 1) {
-      hashTagSelector.setCustomValidity('Хештег не может состоять из одного символа!');
-    }
-    else if (hashTagArray.length >= 5 ) {
-      hashTagSelector.setCustomValidity('нельзя указывать более пяти хэш-тегов!');
-    }
-    else if (hashTagArray.length >= 5 ) {
-      hashTagSelector.setCustomValidity('нельзя указать больше пяти хэш-тегов!');
+    if (hashTagArray[i].charAt(0) !== '#') {
+      evt.target.setCustomValidity('Хеш тег должен начинаться с символа решетка: #');
+      return;
+    } else if (hashTagArray[i] === '#') {
+      evt.target.setCustomValidity('Хештег не может состоять из одной #!');
+      return;
+    } else if (hashTagArray[i].length > MAX_HASHTAG_SYMBOLS) {
+      evt.target.setCustomValidity('Хештег не может быть длиннее 20 символов!');
+      return;
+    }else if (hashTagArray[i].length > MAX_HASHTAG_SYMBOLS) {
+      evt.target.setCustomValidity('Хештег не может быть длиннее 20 символов!');
+      return;
+    }else
+    var elem = hashTagArray[i];
+    for (var k = i+1; k < hashTagArray.length; k ++) {
+      if (elem === hashTagArray[k]) {
+        evt.target.setCustomValidity('нельзя использовать два одинаковых хештега');
+        return;
+      }
     }
   }
 });
