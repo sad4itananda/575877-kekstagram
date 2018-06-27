@@ -224,7 +224,6 @@ var hashTagSelector = document.querySelector('.text__hashtags');
 hashTagSelector.addEventListener('change', function (evt) {
   var hashTagArray = (evt.target.value.toLowerCase()).split(' ');
   evt.target.setCustomValidity('');
-console.log(hashTagArray);
   for (var l = 0; l < hashTagArray.length; l++) {
     if (hashTagArray[l] === '') {
       evt.target.setCustomValidity('между хештегами должен быть один пробел!');
