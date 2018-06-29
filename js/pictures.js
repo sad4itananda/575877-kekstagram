@@ -196,33 +196,33 @@ scaleLevelSelector.style.width = VALUE_MAX + '%';
 var onScalePinSelectorMousedown = function (evt) {
   evt.preventDefault();
   var startCoords = {
-   X: evt.clientX
- };
+     X: evt.clientX
+    };
 
- var onDocumentMousemove = function (moveEvt) {
-  moveEvt.preventDefault();
-  if (scalePinSelector.offsetLeft <= 0)   {
-    scalePinSelector.style.left = 0
-  }
-  if (scalePinSelector.offsetLeft >= SCALE_WIDTH)   {
-    scalePinSelector.style.left = SCALE_WIDTH + 'px'
-  }
-  var shift = {
-    X: startCoords.X - moveEvt.clientX
-  };
-  startCoords = {
-    X: moveEvt.clientX
-  };
-  scalePinSelector.style.left = (scalePinSelector.offsetLeft - shift.X) + 'px';
-};
+    var onDocumentMousemove = function (moveEvt) {
+    moveEvt.preventDefault();
+    if (scalePinSelector.offsetLeft <= 0) {
+    scalePinSelector.style.left = 0;
+    }
+    if (scalePinSelector.offsetLeft >= SCALE_WIDTH) {
+      scalePinSelector.style.left = SCALE_WIDTH + 'px';
+      }
+      var shift = {
+       X: startCoords.X - moveEvt.clientX
+      };
+      startCoords = {
+      X: moveEvt.clientX
+      };
+       scalePinSelector.style.left = (scalePinSelector.offsetLeft - shift.X) + 'px';
+    };
 
-var onDocumentMouseup = function (upEvt) {
-  upEvt.preventDefault();
-  document.removeEventListener('mousemove', onDocumentMousemove);
-  document.removeEventListener('mouseup', onDocumentMouseup);
-};
-document.addEventListener('mousemove', onDocumentMousemove);
-document.addEventListener('mouseup', onDocumentMouseup);
+    var onDocumentMouseup = function (upEvt) {
+      upEvt.preventDefault();
+      document.removeEventListener('mousemove', onDocumentMousemove);
+      document.removeEventListener('mouseup', onDocumentMouseup);
+    };
+    document.addEventListener('mousemove', onDocumentMousemove);
+    document.addEventListener('mouseup', onDocumentMouseup);
 };
 
 scalePinSelector.addEventListener('mousedown', onScalePinSelectorMousedown);
