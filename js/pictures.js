@@ -108,7 +108,6 @@ var VALUE_MAX = 100;
 var ESC_KEYCODE = 27;
 var uploadFormSelector = document.querySelector('#upload-file');
 var buttonCancelFormSelector = document.querySelector('#upload-cancel');
-// var scalePinSelector = document.querySelector('.scale__pin');
 var scaleValue = document.querySelector('.scale__value').value;
 var effectsListSelector = document.querySelector('.effects__list');
 var imgUploadPreviewSelector = document.querySelector('.img-upload__preview');
@@ -184,11 +183,51 @@ pictureCanselSelector.addEventListener('click', onPictureCanselSelectorClick);
 uploadFormSelector.addEventListener('change', onUploadFormSelectorChange);
 buttonCancelFormSelector.addEventListener('click', onButtonCancelFormSelectorClick);
 document.addEventListener('keydown', onDocumentKeydown);
-// scalePinSelector.addEventListener('mouseup', onScalePinMouseup);
 effectsListSelector.addEventListener('click', onEffectsListSelectorClick);
 document.addEventListener('click', onDocumentPicturesSelectorClick);
+// ----------------------------pin-moution------------------------------------------
+var scalePinSelector = document.querySelector('.scale__pin');
+var scaleLevelSelector = document.querySelector('.scale__level');
+var SCALE_WIDTH = 453;
 
-// --------------------------resize-picture------------------------------------
+scalePinSelector.style.left = (scalePinSelector.offsetLeft + SCALE_WIDTH) + 'px';
+scaleLevelSelector.style.width = VALUE_MAX + '%';
+
+var onScalePinSelectorMousedown = function (evt) {
+  evt.preventDefault();
+  var startCoords = {
+   X: evt.clientX
+ };
+
+ var onDocumentMousemove = function (moveEvt) {
+  moveEvt.preventDefault();
+  if (scalePinSelector.offsetLeft <= 0)   {
+    scalePinSelector.style.left = 0
+  }
+  if (scalePinSelector.offsetLeft >= SCALE_WIDTH)   {
+    scalePinSelector.style.left = SCALE_WIDTH + 'px'
+  }
+  var shift = {
+    X: startCoords.X - moveEvt.clientX
+  };
+  startCoords = {
+    X: moveEvt.clientX
+  };
+  scalePinSelector.style.left = (scalePinSelector.offsetLeft - shift.X) + 'px';
+};
+
+var onDocumentMouseup = function (upEvt) {
+  upEvt.preventDefault();
+  document.removeEventListener('mousemove', onDocumentMousemove);
+  document.removeEventListener('mouseup', onDocumentMouseup);
+};
+document.addEventListener('mousemove', onDocumentMousemove);
+document.addEventListener('mouseup', onDocumentMouseup);
+};
+
+scalePinSelector.addEventListener('mousedown', onScalePinSelectorMousedown);
+
+// --------------------------resize-picture-----------------------------------------
 
 var MIN_SIZE_PICTURE = 25;
 var MAX_SIZE_PICTURE = 100;
