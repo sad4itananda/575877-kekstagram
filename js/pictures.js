@@ -108,7 +108,7 @@ var VALUE_MAX = 100;
 var ESC_KEYCODE = 27;
 var uploadFormSelector = document.querySelector('#upload-file');
 var buttonCancelFormSelector = document.querySelector('#upload-cancel');
-var scaleValue = document.querySelector('.scale__value').value;
+var scaleValue ;
 var effectsListSelector = document.querySelector('.effects__list');
 var imgUploadPreviewSelector = document.querySelector('.img-upload__preview');
 var pictureCanselSelector = document.querySelector('#picture-cancel');
@@ -140,6 +140,7 @@ var onEffectsListSelectorClick = function (evt) {
       imgUploadPreviewSelector.classList.add('effects__preview--chrome');
       imgUploadPreviewSelector.style.filter = 'grayscale(' + (scaleValue / VALUE_MAX) + ')';
       imgUploadScaleSelector.classList.remove('hidden');
+      console.log(scaleValue);
       break;
     case 'effect-sepia':
       imgUploadPreviewSelector.classList.add('effects__preview--sepia');
@@ -198,15 +199,16 @@ var onScalePinSelectorMousedown = function (evt) {
   var startCoords = {
     X: evt.clientX
   };
-
+ console.log(scaleValue);
   var onDocumentMousemove = function (moveEvt) {
+    var valuePin = scalePinSelector.offsetLeft;
     moveEvt.preventDefault();
     if (scalePinSelector.offsetLeft <= 0) {
   scalePinSelector.style.left = 0;
     }
     if (scalePinSelector.offsetLeft >= SCALE_WIDTH) {
       scalePinSelector.style.left = SCALE_WIDTH + 'px';
-
+    }
     var shift = {
     X: startCoords.X - moveEvt.clientX
     };
@@ -214,6 +216,8 @@ var onScalePinSelectorMousedown = function (evt) {
       X: moveEvt.clientX
     };
     scalePinSelector.style.left = (scalePinSelector.offsetLeft - shift.X) + 'px';
+    scaleValue = valuePin * VALUE_MAX / SCALE_WIDTH;
+
   };
 
   var onDocumentMouseup = function (upEvt) {
@@ -235,12 +239,13 @@ var MAX_HASHTAG_SYMBOLS = 20;
 var resizeMinusSelector = document.querySelector('.resize__control--minus');
 var resizePlusSelector = document.querySelector('.resize__control--plus');
 var resizeValueSelector = document.querySelector('.resize__control--value');
-var valueResize = resizeValueSelector.value = MAX_SIZE_PICTURE;
+var valueResize =  MAX_SIZE_PICTURE;
+resizeValueSelector.value = MAX_SIZE_PICTURE + ' %';
 
 var onResizeMinusSelectorClick = function () {
   if (valueResize !== MIN_SIZE_PICTURE) {
     valueResize -= MIN_SIZE_PICTURE;
-    resizeValueSelector.value = valueResize;
+    resizeValueSelector.value = valueResize +  ' %';
     imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
   }
 };
@@ -248,7 +253,7 @@ var onResizeMinusSelectorClick = function () {
 var onResizePlusSelectorClick = function () {
   if (valueResize !== MAX_SIZE_PICTURE) {
     valueResize += MIN_SIZE_PICTURE;
-    resizeValueSelector.value = valueResize;
+    resizeValueSelector.value = valueResize + ' %';
     imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
   }
 };
