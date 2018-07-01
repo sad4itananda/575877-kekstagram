@@ -234,7 +234,7 @@ var onScalePinSelectorMousedown = function (evt) {
     var valuePin = scalePinSelector.offsetLeft;
     moveEvt.preventDefault();
     if (scalePinSelector.offsetLeft <= 0) {
-    scalePinSelector.style.left = 0;
+      scalePinSelector.style.left = 0;
     }
     if (scalePinSelector.offsetLeft >= SCALE_WIDTH) {
       scalePinSelector.style.left = SCALE_WIDTH + 'px';
