@@ -132,9 +132,11 @@ var onDocumentKeydown = function (evt) {
 };
 
 var onEffectsListSelectorClick = function (evt) {
-
   switch (evt.target.id) {
     case 'effect-none':
+      scalePinSelector.style.left = SCALE_WIDTH + 'px';
+      scaleLevelSelector.style.width = VALUE_MAX + '%';
+      imgUploadPreviewSelector.style.filter = '';
       if (imgUploadPreviewSelector.classList.length === 1) {
         imgUploadPreviewSelector.classList.add('effects__preview--none');
       } else {
