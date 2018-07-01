@@ -108,7 +108,7 @@ var VALUE_MAX = 100;
 var ESC_KEYCODE = 27;
 var uploadFormSelector = document.querySelector('#upload-file');
 var buttonCancelFormSelector = document.querySelector('#upload-cancel');
-var scaleValue ;
+var scaleValue;
 var effectsListSelector = document.querySelector('.effects__list');
 var imgUploadPreviewSelector = document.querySelector('.img-upload__preview');
 var pictureCanselSelector = document.querySelector('#picture-cancel');
@@ -158,7 +158,7 @@ var onEffectsListSelectorClick = function (evt) {
       if (imgUploadPreviewSelector.classList.length === 1) {
         imgUploadPreviewSelector.classList.add('test');
       } else {
-      imgUploadPreviewSelector.classList.replace(imgUploadPreviewSelector.classList[1], 'effects__preview--sepia');
+        imgUploadPreviewSelector.classList.replace(imgUploadPreviewSelector.classList[1], 'effects__preview--sepia');
       }
       imgUploadScaleSelector.classList.remove('hidden');
       break;
@@ -168,7 +168,7 @@ var onEffectsListSelectorClick = function (evt) {
       if (imgUploadPreviewSelector.classList.length === 1) {
         imgUploadPreviewSelector.classList.add('test');
       } else {
-      imgUploadPreviewSelector.classList.replace(imgUploadPreviewSelector.classList[1], 'effects__preview--marvin');
+        imgUploadPreviewSelector.classList.replace(imgUploadPreviewSelector.classList[1], 'effects__preview--marvin');
       }
       imgUploadScaleSelector.classList.remove('hidden');
       break;
@@ -178,7 +178,7 @@ var onEffectsListSelectorClick = function (evt) {
       if (imgUploadPreviewSelector.classList.length === 1) {
         imgUploadPreviewSelector.classList.add('test');
       } else {
-      imgUploadPreviewSelector.classList.replace(imgUploadPreviewSelector.classList[1], 'effects__preview--phobos');
+        imgUploadPreviewSelector.classList.replace(imgUploadPreviewSelector.classList[1], 'effects__preview--phobos');
       }
       imgUploadScaleSelector.classList.remove('hidden');
       break;
@@ -188,7 +188,7 @@ var onEffectsListSelectorClick = function (evt) {
       if (imgUploadPreviewSelector.classList.length === 1) {
         imgUploadPreviewSelector.classList.add('test');
       } else {
-      imgUploadPreviewSelector.classList.replace(imgUploadPreviewSelector.classList[1], 'effects__preview--heat');
+        imgUploadPreviewSelector.classList.replace(imgUploadPreviewSelector.classList[1], 'effects__preview--heat');
       }
       imgUploadScaleSelector.classList.remove('hidden');
       break;
@@ -230,18 +230,17 @@ var onScalePinSelectorMousedown = function (evt) {
     X: evt.clientX
   };
 
- console.log(scaleValue);
   var onDocumentMousemove = function (moveEvt) {
     var valuePin = scalePinSelector.offsetLeft;
     moveEvt.preventDefault();
     if (scalePinSelector.offsetLeft <= 0) {
-  scalePinSelector.style.left = 0;
+    scalePinSelector.style.left = 0;
     }
     if (scalePinSelector.offsetLeft >= SCALE_WIDTH) {
       scalePinSelector.style.left = SCALE_WIDTH + 'px';
     }
     var shift = {
-    X: startCoords.X - moveEvt.clientX
+      X: startCoords.X - moveEvt.clientX
     };
     startCoords = {
       X: moveEvt.clientX
