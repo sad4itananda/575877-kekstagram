@@ -145,6 +145,7 @@ var onEffectsListSelectorClick = function (evt) {
     case 'effect-chrome':
       scalePinSelector.style.left = SCALE_WIDTH + 'px';
       scaleLevelSelector.style.width = VALUE_MAX + '%';
+      imgUploadPreviewSelector.style.filter = 'grayscale(' + (scaleValue / VALUE_MAX) + ')';
       if (imgUploadPreviewSelector.classList.length === 1) {
         imgUploadPreviewSelector.classList.add('test');
       } else {
@@ -155,6 +156,7 @@ var onEffectsListSelectorClick = function (evt) {
     case 'effect-sepia':
       scalePinSelector.style.left = SCALE_WIDTH + 'px';
       scaleLevelSelector.style.width = VALUE_MAX + '%';
+      imgUploadPreviewSelector.style.filter = 'sepia(' + (scaleValue / VALUE_MAX) + ')';
       if (imgUploadPreviewSelector.classList.length === 1) {
         imgUploadPreviewSelector.classList.add('test');
       } else {
@@ -165,6 +167,7 @@ var onEffectsListSelectorClick = function (evt) {
     case 'effect-marvin':
       scalePinSelector.style.left = SCALE_WIDTH + 'px';
       scaleLevelSelector.style.width = VALUE_MAX + '%';
+      imgUploadPreviewSelector.style.filter = 'invert(' + scaleValue + '%)';
       if (imgUploadPreviewSelector.classList.length === 1) {
         imgUploadPreviewSelector.classList.add('test');
       } else {
@@ -175,6 +178,7 @@ var onEffectsListSelectorClick = function (evt) {
     case 'effect-phobos':
       scalePinSelector.style.left = SCALE_WIDTH + 'px';
       scaleLevelSelector.style.width = VALUE_MAX + '%';
+      imgUploadPreviewSelector.style.filter = 'blur(' + (scaleValue / VALUE_MAX * 3) + 'px)';
       if (imgUploadPreviewSelector.classList.length === 1) {
         imgUploadPreviewSelector.classList.add('test');
       } else {
@@ -185,6 +189,7 @@ var onEffectsListSelectorClick = function (evt) {
     case 'effect-heat':
       scalePinSelector.style.left = SCALE_WIDTH + 'px';
       scaleLevelSelector.style.width = VALUE_MAX + '%';
+      imgUploadPreviewSelector.style.filter = 'brightness(' + (scaleValue / VALUE_MAX * 3) + ')';
       if (imgUploadPreviewSelector.classList.length === 1) {
         imgUploadPreviewSelector.classList.add('test');
       } else {
