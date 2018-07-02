@@ -108,13 +108,12 @@ var VALUE_MAX = 100;
 var ESC_KEYCODE = 27;
 var uploadFormSelector = document.querySelector('#upload-file');
 var buttonCancelFormSelector = document.querySelector('#upload-cancel');
-// var scalePinSelector = document.querySelector('.scale__pin');
-var scaleValue = document.querySelector('.scale__value').value;
+var scaleValue;
 var effectsListSelector = document.querySelector('.effects__list');
 var imgUploadPreviewSelector = document.querySelector('.img-upload__preview');
 var pictureCanselSelector = document.querySelector('#picture-cancel');
 var imgUploadScaleSelector = document.querySelector('.img-upload__scale');
-
+imgUploadScaleSelector.classList.add('hidden');
 var onUploadFormSelectorChange = function () {
   document.querySelector('.img-upload__overlay')
   .classList.remove('hidden');
@@ -133,33 +132,45 @@ var onDocumentKeydown = function (evt) {
 };
 
 var onEffectsListSelectorClick = function (evt) {
+  scalePinSelector.style.left = SCALE_WIDTH + 'px';
+  scaleLevelSelector.style.width = VALUE_MAX + '%';
+
+  var swichImgUploadPreviewClass = function (className) {
+    if (imgUploadPreviewSelector.classList.length === 1) {
+      imgUploadPreviewSelector.classList.add(className);
+    } else {
+      imgUploadPreviewSelector.classList.replace(imgUploadPreviewSelector.classList[1], className);
+    }
+  };
   switch (evt.target.id) {
     case 'effect-none':
+      imgUploadPreviewSelector.style.filter = '';
+      swichImgUploadPreviewClass('effects__preview--none');
       imgUploadScaleSelector.classList.add('hidden');
       break;
     case 'effect-chrome':
-      imgUploadPreviewSelector.classList.add('effects__preview--chrome');
-      imgUploadPreviewSelector.style.filter = 'grayscale(' + (scaleValue / VALUE_MAX) + ')';
+      imgUploadPreviewSelector.style.filter = 'grayscale(' + 1 + ')';
+      swichImgUploadPreviewClass('effects__preview--chrome');
       imgUploadScaleSelector.classList.remove('hidden');
       break;
     case 'effect-sepia':
-      imgUploadPreviewSelector.classList.add('effects__preview--sepia');
-      imgUploadPreviewSelector.style.filter = 'sepia(' + (scaleValue / VALUE_MAX) + ')';
+      imgUploadPreviewSelector.style.filter = 'sepia(' + 1 + ')';
+      swichImgUploadPreviewClass('effects__preview--sepia');
       imgUploadScaleSelector.classList.remove('hidden');
       break;
     case 'effect-marvin':
-      imgUploadPreviewSelector.classList.add('effects__preview--marvin');
-      imgUploadPreviewSelector.style.filter = 'invert(' + scaleValue + '%)';
+      imgUploadPreviewSelector.style.filter = 'invert(' + VALUE_MAX + '%)';
+      swichImgUploadPreviewClass('effects__preview--marvin');
       imgUploadScaleSelector.classList.remove('hidden');
       break;
     case 'effect-phobos':
-      imgUploadPreviewSelector.classList.add('effects__preview--phobos');
-      imgUploadPreviewSelector.style.filter = 'blur(' + (scaleValue / VALUE_MAX * 3) + 'px)';
+      imgUploadPreviewSelector.style.filter = 'blur(' + 3 + 'px)';
+      swichImgUploadPreviewClass('effects__preview--phobos');
       imgUploadScaleSelector.classList.remove('hidden');
       break;
     case 'effect-heat':
-      imgUploadPreviewSelector.classList.add('effects__preview--heat');
-      imgUploadPreviewSelector.style.filter = 'brightness(' + (scaleValue / VALUE_MAX * 3) + ')';
+      imgUploadPreviewSelector.style.filter = 'brightness(' + 3 + ')';
+      swichImgUploadPreviewClass('effects__preview--heat');
       imgUploadScaleSelector.classList.remove('hidden');
       break;
   }
@@ -184,11 +195,72 @@ pictureCanselSelector.addEventListener('click', onPictureCanselSelectorClick);
 uploadFormSelector.addEventListener('change', onUploadFormSelectorChange);
 buttonCancelFormSelector.addEventListener('click', onButtonCancelFormSelectorClick);
 document.addEventListener('keydown', onDocumentKeydown);
-// scalePinSelector.addEventListener('mouseup', onScalePinMouseup);
 effectsListSelector.addEventListener('click', onEffectsListSelectorClick);
 document.addEventListener('click', onDocumentPicturesSelectorClick);
+// ----------------------------pin-moution------------------------------------------
+var scalePinSelector = document.querySelector('.scale__pin');
+var scaleLevelSelector = document.querySelector('.scale__level');
+var SCALE_WIDTH = 453;
 
-// --------------------------resize-picture------------------------------------
+scalePinSelector.style.left = (scalePinSelector.offsetLeft + SCALE_WIDTH) + 'px';
+scaleLevelSelector.style.width = VALUE_MAX + '%';
+
+var onScalePinSelectorMousedown = function (evt) {
+  evt.preventDefault();
+  var startCoords = {
+    X: evt.clientX
+  };
+
+  var onDocumentMousemove = function (moveEvt) {
+    var valuePin = scalePinSelector.offsetLeft;
+    moveEvt.preventDefault();
+    if (scalePinSelector.offsetLeft <= 0) {
+      scalePinSelector.style.left = 0;
+    } else if (scalePinSelector.offsetLeft >= SCALE_WIDTH) {
+      scalePinSelector.style.left = SCALE_WIDTH + 'px';
+    }
+    var shift = {
+      X: startCoords.X - moveEvt.clientX
+    };
+    startCoords = {
+      X: moveEvt.clientX
+    };
+    scalePinSelector.style.left = (scalePinSelector.offsetLeft - shift.X) + 'px';
+    scaleValue = valuePin * VALUE_MAX / SCALE_WIDTH;
+    scaleLevelSelector.style.width = scaleValue + '%';
+
+    switch (imgUploadPreviewSelector.classList[1]) {
+      case 'effects__preview--chrome':
+        imgUploadPreviewSelector.style.filter = 'grayscale(' + (scaleValue / VALUE_MAX) + ')';
+        break;
+      case 'effects__preview--sepia':
+        imgUploadPreviewSelector.style.filter = 'sepia(' + (scaleValue / VALUE_MAX) + ')';
+        break;
+      case 'effects__preview--marvin':
+        imgUploadPreviewSelector.style.filter = 'invert(' + scaleValue + '%)';
+        break;
+      case 'effects__preview--phobos':
+        imgUploadPreviewSelector.style.filter = 'blur(' + (scaleValue / VALUE_MAX * 3) + 'px)';
+        break;
+      case 'effects__preview--heat':
+        imgUploadPreviewSelector.style.filter = 'brightness(' + (scaleValue / VALUE_MAX * 3) + ')';
+        break;
+    }
+
+  };
+
+  var onDocumentMouseup = function (upEvt) {
+    upEvt.preventDefault();
+    document.removeEventListener('mousemove', onDocumentMousemove);
+    document.removeEventListener('mouseup', onDocumentMouseup);
+  };
+  document.addEventListener('mousemove', onDocumentMousemove);
+  document.addEventListener('mouseup', onDocumentMouseup);
+};
+
+scalePinSelector.addEventListener('mousedown', onScalePinSelectorMousedown);
+
+// --------------------------resize-picture-----------------------------------------
 
 var MIN_SIZE_PICTURE = 25;
 var MAX_SIZE_PICTURE = 100;
@@ -196,12 +268,13 @@ var MAX_HASHTAG_SYMBOLS = 20;
 var resizeMinusSelector = document.querySelector('.resize__control--minus');
 var resizePlusSelector = document.querySelector('.resize__control--plus');
 var resizeValueSelector = document.querySelector('.resize__control--value');
-var valueResize = resizeValueSelector.value = MAX_SIZE_PICTURE;
+var valueResize = MAX_SIZE_PICTURE;
+resizeValueSelector.value = MAX_SIZE_PICTURE + ' %';
 
 var onResizeMinusSelectorClick = function () {
   if (valueResize !== MIN_SIZE_PICTURE) {
     valueResize -= MIN_SIZE_PICTURE;
-    resizeValueSelector.value = valueResize;
+    resizeValueSelector.value = valueResize + ' %';
     imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
   }
 };
@@ -209,7 +282,7 @@ var onResizeMinusSelectorClick = function () {
 var onResizePlusSelectorClick = function () {
   if (valueResize !== MAX_SIZE_PICTURE) {
     valueResize += MIN_SIZE_PICTURE;
-    resizeValueSelector.value = valueResize;
+    resizeValueSelector.value = valueResize + ' %';
     imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
   }
 };
