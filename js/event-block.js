@@ -10,10 +10,12 @@
   var bigPictureSelector = document.querySelector('.big-picture');
   var bigPictureImgSelector = document.querySelector('.big-picture__img img');
 
-  var onUploadFormSelectorChange = function () {document.querySelector('.img-upload__overlay').classList.remove('hidden');
+  var onUploadFormSelectorChange = function () {
+    document.querySelector('.img-upload__overlay').classList.remove('hidden');
   };
 
-  var onButtonCancelFormSelectorClick = function () {document.querySelector('.img-upload__overlay').classList.add('hidden');
+  var onButtonCancelFormSelectorClick = function () {
+    document.querySelector('.img-upload__overlay').classList.add('hidden');
   };
 
   var onDocumentKeydown = function (evt) {
@@ -78,7 +80,8 @@
     }
   };
 
-  var onPictureCanselSelectorClick = function () {document.querySelector('.big-picture').classList.add('hidden');
+  var onPictureCanselSelectorClick = function () {
+    document.querySelector('.big-picture').classList.add('hidden');
   };
 
   imgUploadScaleSelector.classList.add('hidden');

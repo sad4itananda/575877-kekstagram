@@ -12,7 +12,7 @@
     if (hashTagArray.length > LIMIT_HASH_TAGS) {
       evt.target.setCustomValidity('Нельзя использовать более 5 хештегов!');
       return;
-    };
+    }
 
     for (var i = 0; i < hashTagArray.length; i++) {
       var elem = hashTagArray[i];
