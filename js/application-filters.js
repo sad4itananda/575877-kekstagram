@@ -2,6 +2,8 @@
 
 (function () {
   var pinSelector = window.util.scalePinSelector;
+  var uploadPinSelector = window.util.imgUploadPreviewSelector;
+
   pinSelector.style.left = (pinSelector.offsetLeft + window.util.SCALE_WIDTH) + 'px';
   window.util.scaleLevelSelector.style.width = window.util.VALUE_MAX + '%';
 
@@ -29,21 +31,21 @@
       window.util.scaleValue = valuePin * window.util.VALUE_MAX / window.util.SCALE_WIDTH;
       window.util.scaleLevelSelector.style.width = window.util.scaleValue + '%';
 
-      switch (window.util.imgUploadPreviewSelector.classList[1]) {
+      switch (uploadPinSelector.classList[1]) {
         case 'effects__preview--chrome':
-          window.util.imgUploadPreviewSelector.style.filter = 'grayscale(' + (window.util.scaleValue / window.util.VALUE_MAX) + ')';
+          uploadPinSelector.style.filter = 'grayscale(' + (window.util.scaleValue / window.util.VALUE_MAX) + ')';
           break;
         case 'effects__preview--sepia':
-          window.util.imgUploadPreviewSelector.style.filter = 'sepia(' + (window.util.scaleValue / window.util.VALUE_MAX) + ')';
+          uploadPinSelector.style.filter = 'sepia(' + (window.util.scaleValue / window.util.VALUE_MAX) + ')';
           break;
         case 'effects__preview--marvin':
-          window.util.imgUploadPreviewSelector.style.filter = 'invert(' + window.util.scaleValue + '%)';
+          uploadPinSelector.style.filter = 'invert(' + window.util.scaleValue + '%)';
           break;
         case 'effects__preview--phobos':
-          window.util.imgUploadPreviewSelector.style.filter = 'blur(' + (window.util.scaleValue / window.util.VALUE_MAX * 3) + 'px)';
+          uploadPinSelector.style.filter = 'blur(' + (window.util.scaleValue / window.util.VALUE_MAX * 3) + 'px)';
           break;
         case 'effects__preview--heat':
-          window.util.imgUploadPreviewSelector.style.filter = 'brightness(' + (window.util.scaleValue / window.util.VALUE_MAX * 3) + ')';
+          uploadPinSelector.style.filter = 'brightness(' + (window.util.scaleValue / window.util.VALUE_MAX * 3) + ')';
           break;
       }
     };

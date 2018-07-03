@@ -9,6 +9,7 @@
   var imgUploadOverlaySelector = document.querySelector('.img-upload__overlay');
   var bigPictureSelector = document.querySelector('.big-picture');
   var bigPictureImgSelector = document.querySelector('.big-picture__img img');
+  var uploadPinSelector = window.util.imgUploadPreviewSelector;
 
   var onUploadFormSelectorChange = function () {
     document.querySelector('.img-upload__overlay').classList.remove('hidden');
@@ -30,40 +31,40 @@
     window.util.scaleLevelSelector.style.width = window.util.VALUE_MAX + '%';
 
     var swichImgUploadPreviewClass = function (className) {
-      if (window.util.imgUploadPreviewSelector.classList.length === 1) {
-        window.util.imgUploadPreviewSelector.classList.add(className);
+      if (uploadPinSelector.classList.length === 1) {
+        uploadPinSelector.classList.add(className);
       } else {
-        window.util.imgUploadPreviewSelector.classList.replace(window.util.imgUploadPreviewSelector.classList[1], className);
+        uploadPinSelector.classList.replace(uploadPinSelector.classList[1], className);
       }
     };
     switch (evt.target.id) {
       case 'effect-none':
-        window.util.imgUploadPreviewSelector.style.filter = '';
+        uploadPinSelector.style.filter = '';
         swichImgUploadPreviewClass('effects__preview--none');
         imgUploadScaleSelector.classList.add('hidden');
         break;
       case 'effect-chrome':
-        window.util.imgUploadPreviewSelector.style.filter = 'grayscale(' + 1 + ')';
+        uploadPinSelector.style.filter = 'grayscale(' + 1 + ')';
         swichImgUploadPreviewClass('effects__preview--chrome');
         imgUploadScaleSelector.classList.remove('hidden');
         break;
       case 'effect-sepia':
-        window.util.imgUploadPreviewSelector.style.filter = 'sepia(' + 1 + ')';
+        uploadPinSelector.style.filter = 'sepia(' + 1 + ')';
         swichImgUploadPreviewClass('effects__preview--sepia');
         imgUploadScaleSelector.classList.remove('hidden');
         break;
       case 'effect-marvin':
-        window.util.imgUploadPreviewSelector.style.filter = 'invert(' + window.util.VALUE_MAX + '%)';
+        uploadPinSelector.style.filter = 'invert(' + window.util.VALUE_MAX + '%)';
         swichImgUploadPreviewClass('effects__preview--marvin');
         imgUploadScaleSelector.classList.remove('hidden');
         break;
       case 'effect-phobos':
-        window.util.imgUploadPreviewSelector.style.filter = 'blur(' + 3 + 'px)';
+        uploadPinSelector.style.filter = 'blur(' + 3 + 'px)';
         swichImgUploadPreviewClass('effects__preview--phobos');
         imgUploadScaleSelector.classList.remove('hidden');
         break;
       case 'effect-heat':
-        window.util.imgUploadPreviewSelector.style.filter = 'brightness(' + 3 + ')';
+        uploadPinSelector.style.filter = 'brightness(' + 3 + ')';
         swichImgUploadPreviewClass('effects__preview--heat');
         imgUploadScaleSelector.classList.remove('hidden');
         break;
