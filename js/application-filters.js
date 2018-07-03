@@ -1,7 +1,9 @@
 'use strict';
+
 (function () {
-  window.utilParametrs.scalePinSelector.style.left = (window.utilParametrs.scalePinSelector.offsetLeft + window.utilParametrs.SCALE_WIDTH) + 'px';
-  window.utilParametrs.scaleLevelSelector.style.width = window.utilParametrs.VALUE_MAX + '%';
+  var pinSelector = window.util.scalePinSelector;
+  pinSelector.style.left = (pinSelector.offsetLeft + window.util.SCALE_WIDTH) + 'px';
+  window.util.scaleLevelSelector.style.width = window.util.VALUE_MAX + '%';
 
   var onScalePinSelectorMousedown = function (evt) {
     evt.preventDefault();
@@ -10,12 +12,12 @@
     };
 
     var onDocumentMousemove = function (moveEvt) {
-      var valuePin = window.utilParametrs.scalePinSelector.offsetLeft;
+      var valuePin = pinSelector.offsetLeft;
       moveEvt.preventDefault();
-      if (window.utilParametrs.scalePinSelector.offsetLeft <= 0) {
-        window.utilParametrs.scalePinSelector.style.left = 0;
-      } else if (window.utilParametrs.scalePinSelector.offsetLeft >= window.utilParametrs.SCALE_WIDTH) {
-        window.utilParametrs.scalePinSelector.style.left = window.utilParametrs.SCALE_WIDTH + 'px';
+      if (pinSelector.offsetLeft <= 0) {
+        pinSelector.style.left = 0;
+      } else if (pinSelector.offsetLeft >= window.util.SCALE_WIDTH) {
+        pinSelector.style.left = window.util.SCALE_WIDTH + 'px';
       }
       var shift = {
         X: startCoords.X - moveEvt.clientX
@@ -23,25 +25,25 @@
       startCoords = {
         X: moveEvt.clientX
       };
-      window.utilParametrs.scalePinSelector.style.left = (window.utilParametrs.scalePinSelector.offsetLeft - shift.X) + 'px';
-      window.utilParametrs.scaleValue = valuePin * window.utilParametrs.VALUE_MAX / window.utilParametrs.SCALE_WIDTH;
-      window.utilParametrs.scaleLevelSelector.style.width = window.utilParametrs.scaleValue + '%';
+      pinSelector.style.left = (pinSelector.offsetLeft - shift.X) + 'px';
+      window.util.scaleValue = valuePin * window.util.VALUE_MAX / window.util.SCALE_WIDTH;
+      window.util.scaleLevelSelector.style.width = window.util.scaleValue + '%';
 
-      switch (window.utilParametrs.imgUploadPreviewSelector.classList[1]) {
+      switch (window.util.imgUploadPreviewSelector.classList[1]) {
         case 'effects__preview--chrome':
-          window.utilParametrs.imgUploadPreviewSelector.style.filter = 'grayscale(' + (window.utilParametrs.scaleValue / window.utilParametrs.VALUE_MAX) + ')';
+          window.util.imgUploadPreviewSelector.style.filter = 'grayscale(' + (window.util.scaleValue / window.util.VALUE_MAX) + ')';
           break;
         case 'effects__preview--sepia':
-          window.utilParametrs.imgUploadPreviewSelector.style.filter = 'sepia(' + (window.utilParametrs.scaleValue / window.utilParametrs.VALUE_MAX) + ')';
+          window.util.imgUploadPreviewSelector.style.filter = 'sepia(' + (window.util.scaleValue / window.util.VALUE_MAX) + ')';
           break;
         case 'effects__preview--marvin':
-          window.utilParametrs.imgUploadPreviewSelector.style.filter = 'invert(' + window.utilParametrs.scaleValue + '%)';
+          window.util.imgUploadPreviewSelector.style.filter = 'invert(' + window.util.scaleValue + '%)';
           break;
         case 'effects__preview--phobos':
-          window.utilParametrs.imgUploadPreviewSelector.style.filter = 'blur(' + (window.utilParametrs.scaleValue / window.utilParametrs.VALUE_MAX * 3) + 'px)';
+          window.util.imgUploadPreviewSelector.style.filter = 'blur(' + (window.util.scaleValue / window.util.VALUE_MAX * 3) + 'px)';
           break;
         case 'effects__preview--heat':
-          window.utilParametrs.imgUploadPreviewSelector.style.filter = 'brightness(' + (window.utilParametrs.scaleValue / window.utilParametrs.VALUE_MAX * 3) + ')';
+          window.util.imgUploadPreviewSelector.style.filter = 'brightness(' + (window.util.scaleValue / window.util.VALUE_MAX * 3) + ')';
           break;
       }
     };
@@ -55,6 +57,6 @@
     document.addEventListener('mouseup', onDocumentMouseup);
   };
 
-  window.utilParametrs.scalePinSelector.addEventListener('mousedown', onScalePinSelectorMousedown);
+  pinSelector.addEventListener('mousedown', onScalePinSelectorMousedown);
 
 })();

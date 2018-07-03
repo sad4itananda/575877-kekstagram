@@ -1,4 +1,5 @@
 'use strict';
+
 (function () {
   var MIN_SIZE_PICTURE = 25;
   var MAX_SIZE_PICTURE = 100;
@@ -12,7 +13,7 @@
     if (valueResize !== MIN_SIZE_PICTURE) {
       valueResize -= MIN_SIZE_PICTURE;
       resizeValueSelector.value = valueResize + ' %';
-      window.imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
+      window.util.imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
     }
   };
 
@@ -20,7 +21,7 @@
     if (valueResize !== MAX_SIZE_PICTURE) {
       valueResize += MIN_SIZE_PICTURE;
       resizeValueSelector.value = valueResize + ' %';
-      window.imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
+      window.util.imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
     }
   };
 

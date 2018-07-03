@@ -1,11 +1,18 @@
 'use strict';
+
 (function () {
   var MAX_HASHTAG_SYMBOLS = 20;
   var LIMIT_HASH_TAGS = 5;
   var hashTagSelector = document.querySelector('.text__hashtags');
+
   hashTagSelector.addEventListener('change', function (evt) {
     var hashTagArray = (evt.target.value.toLowerCase()).split(' ');
     evt.target.setCustomValidity('');
+
+    if (hashTagArray.length > LIMIT_HASH_TAGS) {
+      evt.target.setCustomValidity('Нельзя использовать более 5 хештегов!');
+      return;
+    };
 
     for (var i = 0; i < hashTagArray.length; i++) {
       var elem = hashTagArray[i];
@@ -34,10 +41,6 @@
           return;
         }
       }
-    }
-    if (hashTagArray.length > LIMIT_HASH_TAGS) {
-      evt.target.setCustomValidity('Нельзя использовать более 5 хештегов!');
-      return;
     }
   });
 })();
