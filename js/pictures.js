@@ -1,6 +1,6 @@
 'use strict';
 
-(function(){
+(function () {
   var templateSelector = document.querySelector('#picture').content.querySelector('a');
   var picturesSelector = document.querySelector('.pictures');
 

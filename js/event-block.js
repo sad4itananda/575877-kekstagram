@@ -1,5 +1,5 @@
 'use strict';
-(function(){
+(function () {
   var uploadFormSelector = document.querySelector('#upload-file');
   var buttonCancelFormSelector = document.querySelector('#upload-cancel');
 

@@ -1,10 +1,10 @@
 'use strict';
 (function () {
+  var MAX_HASHTAG_SYMBOLS = 20;
+  var LIMIT_HASH_TAGS = 5;
   var hashTagSelector = document.querySelector('.text__hashtags');
   hashTagSelector.addEventListener('change', function (evt) {
     var hashTagArray = (evt.target.value.toLowerCase()).split(' ');
-    var LIMIT_HASH_TAGS = 5;
-
     evt.target.setCustomValidity('');
 
     for (var i = 0; i < hashTagArray.length; i++) {
@@ -39,5 +39,5 @@
       evt.target.setCustomValidity('Нельзя использовать более 5 хештегов!');
       return;
     }
-  })
+  });
 })();

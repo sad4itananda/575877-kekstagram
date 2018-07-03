@@ -1,5 +1,5 @@
 'use strict';
-(function (){
+(function () {
   utilParametrs.scalePinSelector.style.left = (utilParametrs.scalePinSelector.offsetLeft + utilParametrs.SCALE_WIDTH) + 'px';
   utilParametrs.scaleLevelSelector.style.width = utilParametrs.VALUE_MAX + '%';
 
@@ -29,20 +29,20 @@
 
       switch (utilParametrs.imgUploadPreviewSelector.classList[1]) {
         case 'effects__preview--chrome':
-        utilParametrs.imgUploadPreviewSelector.style.filter = 'grayscale(' + (utilParametrs.scaleValue / utilParametrs.VALUE_MAX) + ')';
-        break;
+          utilParametrs.imgUploadPreviewSelector.style.filter = 'grayscale(' + (utilParametrs.scaleValue / utilParametrs.VALUE_MAX) + ')';
+          break;
         case 'effects__preview--sepia':
-        utilParametrs.imgUploadPreviewSelector.style.filter = 'sepia(' + (utilParametrs.scaleValue / utilParametrs.VALUE_MAX) + ')';
-        break;
+          utilParametrs.imgUploadPreviewSelector.style.filter = 'sepia(' + (utilParametrs.scaleValue / utilParametrs.VALUE_MAX) + ')';
+          break;
         case 'effects__preview--marvin':
-        utilParametrs.imgUploadPreviewSelector.style.filter = 'invert(' + utilParametrs.scaleValue + '%)';
-        break;
+          utilParametrs.imgUploadPreviewSelector.style.filter = 'invert(' + utilParametrs.scaleValue + '%)';
+          break;
         case 'effects__preview--phobos':
-        utilParametrs.imgUploadPreviewSelector.style.filter = 'blur(' + (utilParametrs.scaleValue / utilParametrs.VALUE_MAX * 3) + 'px)';
-        break;
+          utilParametrs.imgUploadPreviewSelector.style.filter = 'blur(' + (utilParametrs.scaleValue / utilParametrs.VALUE_MAX * 3) + 'px)';
+          break;
         case 'effects__preview--heat':
-        utilParametrs.imgUploadPreviewSelector.style.filter = 'brightness(' + (utilParametrs.scaleValue / utilParametrs.VALUE_MAX * 3) + ')';
-        break;
+          utilParametrs.imgUploadPreviewSelector.style.filter = 'brightness(' + (utilParametrs.scaleValue / utilParametrs.VALUE_MAX * 3) + ')';
+          break;
       }
     };
 
