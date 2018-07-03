@@ -16,6 +16,43 @@
   ];
   var parentCommentsSelector = document.querySelector('.social__comments');
 
+  var createElement = function (tag, className, text) {
+    var element = document.createElement(tag);
+    element.classList.add(className);
+    if (text) {
+      element.textContent = text;
+    }
+    return element;
+  };
+
+  var addChildElement = function (child, parent) {
+    parent.appendChild(child);
+  };
+
+  var getRandomInteger = function (min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+
+  var generatePhotos = function () {
+    var array = [];
+    for (var i = 0; i < PHOTOS_COUNT; i++) {
+      var commentsQuantity = getRandomInteger(1, 2);
+      array[i] = {
+        url: 'photos/' + (i + 1) + '.jpg',
+        likes: getRandomInteger(LIKES_START_QUANTITY, LIKES_FINISH_QUANTITY),
+        description: PHRASES_DESCRIPTIONS[getRandomInteger(0, PHRASES_DESCRIPTIONS.length - 1)],
+        comments: []
+      };
+      for (var j = 0; j < commentsQuantity; j++) {
+        var randomPhrases = PHRASES_COMMENTS[getRandomInteger(0, PHRASES_COMMENTS.length - 1)];
+        array[i].comments[j] = randomPhrases;
+      }
+    }
+    return array;
+  };
+
+  // window.photos = generatePhotos();
+
   window.util = {
     SCALE_WIDTH: 453,
     VALUE_MAX: 100,
@@ -25,9 +62,6 @@
     scaleLevelSelector: document.querySelector('.scale__level'),
     imgUploadPreviewSelector: document.querySelector('.img-upload__preview'),
 
-    getRandomInteger: function (min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    },
     showBigPicture: function () {
       document.querySelector('.big-picture').classList.remove('hidden');
     },
@@ -42,7 +76,7 @@
         var parent = createElement('li', 'social__comment');
         parent.classList.add('social__comment--text');
         var childImg = createElement('img', 'social__picture');
-        childImg.src = 'img/avatar-' + window.util.getRandomInteger(1, 6) + '.svg';
+        childImg.src = 'img/avatar-' + getRandomInteger(1, 6) + '.svg';
         childImg.alt = 'Аватар комментатора фотографии';
         childImg.width = '35';
         childImg.height = '35';
@@ -51,40 +85,9 @@
         addChildElement(childComment, parent);
         addChildElement(parent, parentCommentsSelector);
       }
-    }
+    },
+    photos: generatePhotos()
   };
 
-  var createElement = function (tag, className, text) {
-    var element = document.createElement(tag);
-    element.classList.add(className);
-    if (text) {
-      element.textContent = text;
-    }
-    return element;
-  };
-
-  var addChildElement = function (child, parent) {
-    parent.appendChild(child);
-  };
-
-  var generatePhotos = function () {
-    var array = [];
-    for (var i = 0; i < PHOTOS_COUNT; i++) {
-      var commentsQuantity = window.util.getRandomInteger(1, 2);
-      array[i] = {
-        url: 'photos/' + (i + 1) + '.jpg',
-        likes: window.util.getRandomInteger(LIKES_START_QUANTITY, LIKES_FINISH_QUANTITY),
-        description: PHRASES_DESCRIPTIONS[window.util.getRandomInteger(0, PHRASES_DESCRIPTIONS.length - 1)],
-        comments: []
-      };
-      for (var j = 0; j < commentsQuantity; j++) {
-        var randomPhrases = PHRASES_COMMENTS[window.util.getRandomInteger(0, PHRASES_COMMENTS.length - 1)];
-        array[i].comments[j] = randomPhrases;
-      }
-    }
-    return array;
-  };
-
-  window.photos = generatePhotos();
 })();
 

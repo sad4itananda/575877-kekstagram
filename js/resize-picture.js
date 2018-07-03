@@ -6,6 +6,7 @@
   var resizeMinusSelector = document.querySelector('.resize__control--minus');
   var resizePlusSelector = document.querySelector('.resize__control--plus');
   var resizeValueSelector = document.querySelector('.resize__control--value');
+  var previewSelector = window.util.imgUploadPreviewSelector;
   var valueResize = MAX_SIZE_PICTURE;
   resizeValueSelector.value = MAX_SIZE_PICTURE + ' %';
 
@@ -13,7 +14,7 @@
     if (valueResize !== MIN_SIZE_PICTURE) {
       valueResize -= MIN_SIZE_PICTURE;
       resizeValueSelector.value = valueResize + ' %';
-      window.util.imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
+      previewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
     }
   };
 
@@ -21,7 +22,7 @@
     if (valueResize !== MAX_SIZE_PICTURE) {
       valueResize += MIN_SIZE_PICTURE;
       resizeValueSelector.value = valueResize + ' %';
-      window.util.imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
+      previewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
     }
   };
 

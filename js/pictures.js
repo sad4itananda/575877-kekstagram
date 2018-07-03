@@ -21,7 +21,7 @@
   };
 
   var init = function () {
-    renderPhotos(window.photos);
+    renderPhotos(window.util.photos);
     hiddenElements();
   };
 
