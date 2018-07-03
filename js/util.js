@@ -41,7 +41,7 @@
     generatePhotos: function () {
       var array = [];
       for (var i = 0; i < window.util.PHOTOS_COUNT; i++) {
-        var commentsQuantity =window.util.getRandomInteger(1, 2);
+        var commentsQuantity = window.util.getRandomInteger(1, 2);
         array[i] = {
           url: 'photos/' + (i + 1) + '.jpg',
           likes: window.util.getRandomInteger(window.util.LIKES_START_QUANTITY, window.util.LIKES_FINISH_QUANTITY),
@@ -81,6 +81,6 @@
     }
   };
 
-    window.photos = util.generatePhotos();
+  window.photos = window.util.generatePhotos();
 })();
 
