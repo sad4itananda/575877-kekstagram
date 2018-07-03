@@ -12,7 +12,7 @@
     if (valueResize !== MIN_SIZE_PICTURE) {
       valueResize -= MIN_SIZE_PICTURE;
       resizeValueSelector.value = valueResize + ' %';
-      imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
+      window.imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
     }
   };
 
@@ -20,7 +20,7 @@
     if (valueResize !== MAX_SIZE_PICTURE) {
       valueResize += MIN_SIZE_PICTURE;
       resizeValueSelector.value = valueResize + ' %';
-      imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
+      window.imgUploadPreviewSelector.style.transform = 'scale(' + valueResize / MAX_SIZE_PICTURE + ')';
     }
   };
 

@@ -72,10 +72,10 @@
   var onDocumentPicturesSelectorClick = function (evt) {
     if (evt.target.className === 'picture__img') {
       var index = evt.target.getAttribute('data-id');
-      document.querySelector('.big-picture__img img').src = photos[index].url;
+      document.querySelector('.big-picture__img img').src = window.photos[index].url;
       window.utilMethods.showBigPicture();
-      window.utilMethods.initBigPictureData(photos[index]);
-      window.utilMethods.getComment(photos[index]);
+      window.utilMethods.initBigPictureData(window.photos[index]);
+      window.utilMethods.getComment(window.photos[index]);
     }
   };
 
