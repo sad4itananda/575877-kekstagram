@@ -18,51 +18,51 @@
   };
 
   var onDocumentKeydown = function (evt) {
-    if (evt.keyCode === utilParametrs.ESC_KEYCODE) {
+    if (evt.keyCode === window.utilParametrs.ESC_KEYCODE) {
       document.querySelector('.img-upload__overlay').classList.add('hidden');
       document.querySelector('.big-picture').classList.add('hidden');
     }
   };
 
   var onEffectsListSelectorClick = function (evt) {
-    utilParametrs.scalePinSelector.style.left = utilParametrs.SCALE_WIDTH + 'px';
-    utilParametrs.scaleLevelSelector.style.width = utilParametrs.VALUE_MAX + '%';
+    window.utilParametrs.scalePinSelector.style.left = window.utilParametrs.SCALE_WIDTH + 'px';
+    window.utilParametrs.scaleLevelSelector.style.width = window.utilParametrs.VALUE_MAX + '%';
 
     var swichImgUploadPreviewClass = function (className) {
-      if (utilParametrs.imgUploadPreviewSelector.classList.length === 1) {
-        utilParametrs.imgUploadPreviewSelector.classList.add(className);
+      if (window.utilParametrs.imgUploadPreviewSelector.classList.length === 1) {
+        window.utilParametrs.imgUploadPreviewSelector.classList.add(className);
       } else {
-        utilParametrs.imgUploadPreviewSelector.classList.replace(utilParametrs.imgUploadPreviewSelector.classList[1], className);
+        window.utilParametrs.imgUploadPreviewSelector.classList.replace(window.utilParametrs.imgUploadPreviewSelector.classList[1], className);
       }
     };
     switch (evt.target.id) {
       case 'effect-none':
-        utilParametrs.imgUploadPreviewSelector.style.filter = '';
+        window.utilParametrs.imgUploadPreviewSelector.style.filter = '';
         swichImgUploadPreviewClass('effects__preview--none');
         imgUploadScaleSelector.classList.add('hidden');
         break;
       case 'effect-chrome':
-        utilParametrs.imgUploadPreviewSelector.style.filter = 'grayscale(' + 1 + ')';
+        window.utilParametrs.imgUploadPreviewSelector.style.filter = 'grayscale(' + 1 + ')';
         swichImgUploadPreviewClass('effects__preview--chrome');
         imgUploadScaleSelector.classList.remove('hidden');
         break;
       case 'effect-sepia':
-        utilParametrs.imgUploadPreviewSelector.style.filter = 'sepia(' + 1 + ')';
+        window.utilParametrs.imgUploadPreviewSelector.style.filter = 'sepia(' + 1 + ')';
         swichImgUploadPreviewClass('effects__preview--sepia');
         imgUploadScaleSelector.classList.remove('hidden');
         break;
       case 'effect-marvin':
-        utilParametrs.imgUploadPreviewSelector.style.filter = 'invert(' + utilParametrs.VALUE_MAX + '%)';
+        window.utilParametrs.imgUploadPreviewSelector.style.filter = 'invert(' + window.utilParametrs.VALUE_MAX + '%)';
         swichImgUploadPreviewClass('effects__preview--marvin');
         imgUploadScaleSelector.classList.remove('hidden');
         break;
       case 'effect-phobos':
-        utilParametrs.imgUploadPreviewSelector.style.filter = 'blur(' + 3 + 'px)';
+        window.utilParametrs.imgUploadPreviewSelector.style.filter = 'blur(' + 3 + 'px)';
         swichImgUploadPreviewClass('effects__preview--phobos');
         imgUploadScaleSelector.classList.remove('hidden');
         break;
       case 'effect-heat':
-        utilParametrs.imgUploadPreviewSelector.style.filter = 'brightness(' + 3 + ')';
+        window.utilParametrs.imgUploadPreviewSelector.style.filter = 'brightness(' + 3 + ')';
         swichImgUploadPreviewClass('effects__preview--heat');
         imgUploadScaleSelector.classList.remove('hidden');
         break;
@@ -73,9 +73,9 @@
     if (evt.target.className === 'picture__img') {
       var index = evt.target.getAttribute('data-id');
       document.querySelector('.big-picture__img img').src = photos[index].url;
-      utilMethods.showBigPicture();
-      utilMethods.initBigPictureData(photos[index]);
-      utilMethods.getComment(photos[index]);
+      window.utilMethods.showBigPicture();
+      window.utilMethods.initBigPictureData(photos[index]);
+      window.utilMethods.getComment(photos[index]);
     }
   };
 

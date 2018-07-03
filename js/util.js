@@ -44,16 +44,16 @@
 
     generatePhotos: function () {
       var array = [];
-      for (var i = 0; i < utilParametrs.PHOTOS_COUNT; i++) {
-        var commentsQuantity = utilMethods.getRandomInteger(1, 2);
+      for (var i = 0; i < window.utilParametrs.PHOTOS_COUNT; i++) {
+        var commentsQuantity = window.utilMethods.getRandomInteger(1, 2);
         array[i] = {
           url: 'photos/' + (i + 1) + '.jpg',
-          likes: utilMethods.getRandomInteger(utilParametrs.LIKES_START_QUANTITY, utilParametrs.LIKES_FINISH_QUANTITY),
-          description: utilParametrs.PHRASES_DESCRIPTIONS[utilMethods.getRandomInteger(0, utilParametrs.PHRASES_DESCRIPTIONS.length - 1)],
+          likes: window.utilMethods.getRandomInteger(window.utilParametrs.LIKES_START_QUANTITY, window.utilParametrs.LIKES_FINISH_QUANTITY),
+          description: window.utilParametrs.PHRASES_DESCRIPTIONS[window.utilMethods.getRandomInteger(0, window.utilParametrs.PHRASES_DESCRIPTIONS.length - 1)],
           comments: []
         };
         for (var j = 0; j < commentsQuantity; j++) {
-          var randomPhrases = utilParametrs.PHRASES_COMMENTS[utilMethods.getRandomInteger(0, utilParametrs.PHRASES_COMMENTS.length - 1)];
+          var randomPhrases = window.utilParametrs.PHRASES_COMMENTS[window.utilMethods.getRandomInteger(0, window.utilParametrs.PHRASES_COMMENTS.length - 1)];
           array[i].comments[j] = randomPhrases;
         }
       }
@@ -73,21 +73,21 @@
 
     getComment: function (element) {
       for (var i = 0; i < element.comments.length; i++) {
-        var parent = utilMethods.createElement('li', 'social__comment');
+        var parent = window.utilMethods.createElement('li', 'social__comment');
         parent.classList.add('social__comment--text');
-        var childImg = utilMethods.createElement('img', 'social__picture');
-        childImg.src = 'img/avatar-' + utilMethods.getRandomInteger(1, 6) + '.svg';
+        var childImg = window.utilMethods.createElement('img', 'social__picture');
+        childImg.src = 'img/avatar-' + window.utilMethods.getRandomInteger(1, 6) + '.svg';
         childImg.alt = 'Аватар комментатора фотографии';
         childImg.width = '35';
         childImg.height = '35';
-        var childComment = utilMethods.createElement('p', 'social__text', element.comments[i]);
-        utilMethods.addChildElement(childImg, parent);
-        utilMethods.addChildElement(childComment, parent);
-        utilMethods.addChildElement(parent, utilParametrs.parentCommentsSelector);
+        var childComment = window.utilMethods.createElement('p', 'social__text', element.comments[i]);
+        window.utilMethods.addChildElement(childImg, parent);
+        window.utilMethods.addChildElement(childComment, parent);
+        window.utilMethods.addChildElement(parent, window.utilParametrs.parentCommentsSelector);
       }
     }
   };
 
-  window.photos = utilMethods.generatePhotos();
+  window.photos = window.utilMethods.generatePhotos();
 })();
 
