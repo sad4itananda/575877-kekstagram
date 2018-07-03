@@ -63,7 +63,7 @@
     return element;
   };
 
-  var  addChildElement = function (child, parent) {
+  var addChildElement = function (child, parent) {
     parent.appendChild(child);
   };
 
