@@ -30,8 +30,8 @@
   };
 
   var getRandomInteger = function (min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    };
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
 
   var generatePhotos = function () {
     var array = [];
@@ -50,8 +50,6 @@
     }
     return array;
   };
-
-  // window.photos = generatePhotos();
 
   window.util = {
     SCALE_WIDTH: 453,
