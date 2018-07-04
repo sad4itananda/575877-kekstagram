@@ -43,4 +43,16 @@
       }
     }
   });
+  // ===============================================Server-upload==========================================================
+  var form  = document.querySelector('#upload-select-image');
+  var closeImgOverlay = function (response) {
+    document.querySelector('.img-upload__overlay').classList.add('hidden');
+    console.log(response);
+  };
+
+  form.addEventListener('submit', function (evt) {
+    window.upload(new FormData(form), closeImgOverlay);
+  });
+  // =======================================================================================================================
+
 })();
