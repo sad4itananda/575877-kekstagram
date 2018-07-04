@@ -1,4 +1,4 @@
- 'use strict';
+'use strict';
 
 (function () {
   var MIN_SIZE_PICTURE = 25;
