@@ -45,7 +45,7 @@
   });
   // ===============================================Server-upload==========================================================
   var form = document.querySelector('#upload-select-image');
-  var closeImgOverlay = function (response) {
+  var closeImgOverlay = function () {
     document.querySelector('.img-upload__overlay').classList.add('hidden');
   };
 
