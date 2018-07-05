@@ -20,7 +20,6 @@
     xhr.send(data);
   };
 
-
   window.download = function (onLoad, onError) {
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
@@ -36,5 +35,4 @@
     xhr.open('GET', URL_DOWNLOAD);
     xhr.send();
   };
-
 })();

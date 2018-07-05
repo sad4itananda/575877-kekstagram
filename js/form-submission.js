@@ -50,19 +50,19 @@
 
   var onLoad = function () {
     document.querySelector('.img-upload__overlay').classList.add('hidden');
-    console.log('done!!!');
+    // console.log('done!!!');
   };
 
   var onError = function (err) {
-    console.log(err);
+    // console.log(err);
     imgMessageErrorSelector.classList.remove('hidden');
   };
 
-  var onUploadButtonSelectorClick = function() {
+  var onUploadButtonSelectorClick = function () {
     window.upload(new FormData(formSelector), onLoad, onError);
   };
 
-  uploadButtonSelecotr.addEventListener('click', onUploadButtonSelectorClick );
+  uploadButtonSelecotr.addEventListener('click', onUploadButtonSelectorClick);
   // =======================================================================================================================
 
 })();
