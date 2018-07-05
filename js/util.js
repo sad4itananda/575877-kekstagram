@@ -14,24 +14,24 @@
   //   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   //   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
   // ];
-  // var parentCommentsSelector = document.querySelector('.social__comments');
+  var parentCommentsSelector = document.querySelector('.social__comments');
 
-  // var createElement = function (tag, className, text) {
-  //   var element = document.createElement(tag);
-  //   element.classList.add(className);
-  //   if (text) {
-  //     element.textContent = text;
-  //   }
-  //   return element;
-  // };
+  var createElement = function (tag, className, text) {
+    var element = document.createElement(tag);
+    element.classList.add(className);
+    if (text) {
+      element.textContent = text;
+    }
+    return element;
+  };
 
-  // var addChildElement = function (child, parent) {
-  //   parent.appendChild(child);
-  // };
+  var addChildElement = function (child, parent) {
+    parent.appendChild(child);
+  };
 
-  // var getRandomInteger = function (min, max) {
-  //   return Math.floor(Math.random() * (max - min + 1)) + min;
-  // };
+  var getRandomInteger = function (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
 
   // var generatePhotos = function () {
   //   var array = [];
