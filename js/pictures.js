@@ -34,10 +34,5 @@
     window.download(onLoad, onError);
   };
 
-  // var init = function () {
-  //   renderPhotos(window.util.photos);
-  //   hiddenElements();
-  // };
-
   init();
 })();
