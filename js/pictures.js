@@ -21,6 +21,7 @@
   };
 
   var onLoad = function (data) {
+    window.util.photos = data;
     renderPhotos(data);
     hiddenElements();
   };
