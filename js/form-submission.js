@@ -50,16 +50,16 @@
 
   var onLoad = function () {
     document.querySelector('.img-upload__overlay').classList.add('hidden');
-    console.log(222);
+    console.log('done!!!');
   };
 
   var onError = function (err) {
     console.log(err);
-    imgMessageError.classList.remove('hidden');
+    imgMessageErrorSelector.classList.remove('hidden');
   };
 
   var onUploadButtonSelectorClick = function() {
-    window.upload(new FormData(form), onLoad, onError);
+    window.upload(new FormData(formSelector), onLoad, onError);
   };
 
   uploadButtonSelecotr.addEventListener('click', onUploadButtonSelectorClick );
