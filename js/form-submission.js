@@ -54,7 +54,7 @@
   };
 
   var onError = function (err) {
-    // console.log(err);
+    console.log(err);
     imgMessageErrorSelector.classList.remove('hidden');
   };
 
