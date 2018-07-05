@@ -20,10 +20,24 @@
     }
   };
 
-  var init = function () {
-    renderPhotos(window.util.photos);
+  var onLoad = function (data) {
+    console.log(data);
+    renderPhotos(data);
     hiddenElements();
+  }
+
+  var onError = function(err) {
+    console.log(err);
+  }
+
+  var init = function () {
+    window.download(onLoad, onError);
   };
+
+  // var init = function () {
+  //   renderPhotos(window.util.photos);
+  //   hiddenElements();
+  // };
 
   init();
 })();

@@ -44,14 +44,14 @@
     }
   });
   // ===============================================Server-upload==========================================================
-  var form = document.querySelector('#upload-select-image');
-  var closeImgOverlay = function () {
-    document.querySelector('.img-upload__overlay').classList.add('hidden');
-  };
+  // var form = document.querySelector('#upload-select-image');
+  // var closeImgOverlay = function () {
+  //   document.querySelector('.img-upload__overlay').classList.add('hidden');
+  // };
 
-  form.addEventListener('submit', function () {
-    window.upload(new FormData(form), closeImgOverlay);
-  });
+  // form.addEventListener('submit', function (evt) {
+  //   window.upload(new FormData(form), closeImgOverlay);
+  // });
   // =======================================================================================================================
 
 })();
