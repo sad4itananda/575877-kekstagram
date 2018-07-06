@@ -60,7 +60,7 @@
       document.body.appendChild(errorEelement);
       errorEelement.classList.remove('hidden');
       setTimeout(function () {
-         errorEelement.classList.add('hidden')
+          errorEelement.classList.add('hidden');
       }, 2000);
     }
   };
