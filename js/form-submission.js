@@ -45,24 +45,26 @@
   });
   // ===============================================Server-upload==========================================================
   var formSelector = document.querySelector('#upload-select-image');
-  var imgMessageErrorSelector = document.querySelector('.img-upload__message--error');
+
   var uploadButtonSelecotr = document.querySelector('#upload-submit');
 
   var onLoad = function () {
     document.querySelector('.img-upload__overlay').classList.add('hidden');
-    // console.log('done!!!');
+    console.log('done!!!');
   };
 
   var onError = function (err) {
     console.log(err);
-    imgMessageErrorSelector.classList.remove('hidden');
+    window.util.showError();
   };
 
-  var onUploadButtonSelectorClick = function () {
+  var onUploadButtonSelectorSubmit = function (evt) {
+    evt.preventDefault();
     window.upload(new FormData(formSelector), onLoad, onError);
   };
 
-  uploadButtonSelecotr.addEventListener('click', onUploadButtonSelectorClick);
+  formSelector.addEventListener('submit', onUploadButtonSelectorSubmit);
+
   // =======================================================================================================================
 
 })();

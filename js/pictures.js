@@ -24,10 +24,12 @@
     window.util.photos = data;
     renderPhotos(data);
     hiddenElements();
+
   };
 
   var onError = function (err) {
     console.log(err);
+    window.util.showError();
   };
 
   var init = function () {

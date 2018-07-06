@@ -54,6 +54,12 @@
         addChildElement(parent, parentCommentsSelector);
       }
     },
+    showError: function () {
+      var errorEelement = document.querySelector('#picture').content.querySelector('.img-upload__message--error').cloneNode(true);
+      document.querySelector('.img-upload__overlay').classList.add('hidden');
+      document.body.appendChild(errorEelement);
+      errorEelement.classList.remove('hidden');
+    }
   };
 
 })();
