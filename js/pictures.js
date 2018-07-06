@@ -28,7 +28,7 @@
   };
 
   var onError = function (err) {
-    window.util.showError();
+    window.util.showError(err);
   };
 
   var init = function () {

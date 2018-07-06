@@ -55,10 +55,11 @@
       }
     },
     showError: function (err) {
+      var text =' <div class="error__links"> <a class="error__link" href="#">Попробовать снова</a> <a class="error__link" href="#">Загрузить другой файл</a> </div>';
       var errorEelement = document.querySelector('#picture').content.querySelector('.img-upload__message--error').cloneNode(true);
       document.querySelector('.img-upload__overlay').classList.add('hidden');
       document.body.appendChild(errorEelement);
-      //  document.querySelector('div.img-upload__message--error').textContent = err;
+       document.querySelector('div.img-upload__message--error').innerHTML = err + text ;
       errorEelement.classList.remove('hidden');
     }
   };
