@@ -53,7 +53,6 @@
   };
 
   var onError = function (err) {
-    console.log(err);
     window.util.showError();
   };
 

@@ -24,11 +24,10 @@
     window.util.photos = data;
     renderPhotos(data);
     hiddenElements();
-
+    document.querySelector('.img-filters').classList.remove('img-filters--inactive');
   };
 
   var onError = function (err) {
-    console.log(err);
     window.util.showError();
   };
 

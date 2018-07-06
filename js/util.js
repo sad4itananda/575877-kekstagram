@@ -54,10 +54,11 @@
         addChildElement(parent, parentCommentsSelector);
       }
     },
-    showError: function () {
+    showError: function (err) {
       var errorEelement = document.querySelector('#picture').content.querySelector('.img-upload__message--error').cloneNode(true);
       document.querySelector('.img-upload__overlay').classList.add('hidden');
       document.body.appendChild(errorEelement);
+      //  document.querySelector('div.img-upload__message--error').textContent = err;
       errorEelement.classList.remove('hidden');
     }
   };

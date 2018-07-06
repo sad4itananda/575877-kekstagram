@@ -10,11 +10,15 @@
 
     xhr.addEventListener('load', function () {
       if (xhr.status === 200) {
-        onLoad();
+        onLoad(xhr.response);
       } else {
-        onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
+        onError('Ошибка соединения');
       }
     });
+    xhr.addEventListener('error', function () {
+      onError('Ошибка соединения');
+    });
+
 
     xhr.open('POST', URL_UPLOAD);
     xhr.send(data);
@@ -28,8 +32,11 @@
       if (xhr.status === 200) {
         onLoad(xhr.response);
       } else {
-        onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
+        onError('Ошибка соединения');
       }
+    });
+    xhr.addEventListener('error', function () {
+      onError('Ошибка соединения');
     });
 
     xhr.open('GET', URL_DOWNLOAD);
