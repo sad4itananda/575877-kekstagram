@@ -10,13 +10,6 @@
   var bigPictureSelector = document.querySelector('.big-picture');
   var bigPictureImgSelector = document.querySelector('.big-picture__img img');
   var uploadPinSelector = window.util.imgUploadPreviewSelector;
-  // var Error = document.querySelector('.img-upload__message--error');
-
-  // document.addEventListener('click',onDocumentClick);
-
-  // var onDocumentClick = function () {
-  //   document.querySelector('.img-upload__message--error').classList.add('hidden');
-  };
 
   var onUploadFormSelectorChange = function () {
     document.querySelector('.img-upload__overlay').classList.remove('hidden');
