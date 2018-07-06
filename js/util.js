@@ -59,6 +59,7 @@
       document.querySelector('.img-upload__overlay').classList.add('hidden');
       document.body.appendChild(errorEelement);
       errorEelement.classList.remove('hidden');
+      setTimeout(function(){errorEelement.classList.add('hidden')}, 3000);
     }
   };
 
