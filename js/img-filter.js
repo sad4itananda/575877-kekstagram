@@ -8,7 +8,7 @@ var onImgFiltersFormClick = function (evt) {
   switch (evt.target.id) {
     case 'filter-popular':
       activeImgFilter(evt);
-      var sortPopularImg = photos.sort(function(a,b){
+      var sortPopularImg = photos.sort(function (a, b){
         if (a.index > b.index) {
           return 1;
         }
@@ -24,21 +24,21 @@ var onImgFiltersFormClick = function (evt) {
       break;
     case 'filter-discussed':
       activeImgFilter(evt);
-      var sortDiscussedImg = photos.sort(function(a,b){
-      if (a.comments.length > b.comments.length) {
-        return 1;
-      }
-      if (a.comments.length < b.comments.length) {
-        return -1;
-      }
-      return 0;
+      var sortDiscussedImg = photos.sort(function (a, b){
+        if (a.comments.length > b.comments.length) {
+          return 1;
+        }
+        if (a.comments.length < b.comments.length) {
+          return -1;
+        }
+        return 0;
       });
-      console.log (sortDiscussedImg);
+      // console.log(sortDiscussedImg);
       break;
   }
 };
 
-imgFiltersForm.addEventListener('click', onImgFiltersFormClick );
+imgFiltersForm.addEventListener('click', onImgFiltersFormClick);
 
 var activeImgFilter = function (evt) {
   for (var i = 0; i < imgFiltersForm.children.length; i++) {
