@@ -20,9 +20,19 @@
     }
   };
 
-  var init = function () {
-    renderPhotos(window.util.photos);
+  var onLoad = function (data) {
+    window.util.photos = data;
+    renderPhotos(data);
     hiddenElements();
+    document.querySelector('.img-filters').classList.remove('img-filters--inactive');
+  };
+
+  var onError = function () {
+    window.util.showError();
+  };
+
+  var init = function () {
+    window.download(onLoad, onError);
   };
 
   init();

@@ -43,4 +43,26 @@
       }
     }
   });
+  // ===============================================Server-upload==========================================================
+  var formSelector = document.querySelector('#upload-select-image');
+
+  // var uploadButtonSelecotr = document.querySelector('#upload-submit');
+
+  var onLoad = function () {
+    document.querySelector('.img-upload__overlay').classList.add('hidden');
+  };
+
+  var onError = function () {
+    window.util.showError();
+  };
+
+  var onUploadButtonSelectorSubmit = function (evt) {
+    evt.preventDefault();
+    window.upload(new FormData(formSelector), onLoad, onError);
+  };
+
+  formSelector.addEventListener('submit', onUploadButtonSelectorSubmit);
+
+  // =======================================================================================================================
+
 })();
