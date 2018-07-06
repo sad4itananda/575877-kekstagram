@@ -8,7 +8,7 @@ var onImgFiltersFormClick = function (evt) {
   switch (evt.target.id) {
     case 'filter-popular':
       activeImgFilter(evt);
-      var sortPopularImg = photos.sort (function (a, b){
+      var sortPopularImg = photos.sort(function (a, b) {
         if (a.index > b.index) {
           return 1;
         }
@@ -24,7 +24,7 @@ var onImgFiltersFormClick = function (evt) {
       break;
     case 'filter-discussed':
       activeImgFilter(evt);
-      var sortDiscussedImg = photos.sort (function (a, b){
+      var sortDiscussedImg = photos.sort(function (a, b) {
         if (a.comments.length > b.comments.length) {
           return 1;
         }
