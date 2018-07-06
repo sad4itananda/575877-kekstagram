@@ -46,11 +46,10 @@
   // ===============================================Server-upload==========================================================
   var formSelector = document.querySelector('#upload-select-image');
 
-  var uploadButtonSelecotr = document.querySelector('#upload-submit');
+  // var uploadButtonSelecotr = document.querySelector('#upload-submit');
 
   var onLoad = function () {
     document.querySelector('.img-upload__overlay').classList.add('hidden');
-    console.log('done!!!');
   };
 
   var onError = function (err) {
