@@ -21,6 +21,10 @@
   };
 
   var onLoad = function (data) {
+    for (var i = 0; i < data.length; i++) {
+      data[i].index = i;
+    };
+    console.log (data);
     window.util.photos = data;
     renderPhotos(data);
     hiddenElements();
