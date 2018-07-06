@@ -1,3 +1,3 @@
-'use strict';
+// 'use strict';
 
-var document.querySelector('form.img-filters__form');
+// var document.querySelector('form.img-filters__form');

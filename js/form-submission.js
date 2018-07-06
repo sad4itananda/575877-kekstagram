@@ -52,7 +52,7 @@
     document.querySelector('.img-upload__overlay').classList.add('hidden');
   };
 
-  var onError = function (err) {
+  var onError = function () {
     window.util.showError();
   };
 

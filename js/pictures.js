@@ -27,8 +27,8 @@
     document.querySelector('.img-filters').classList.remove('img-filters--inactive');
   };
 
-  var onError = function (err) {
-    window.util.showError(err);
+  var onError = function () {
+    window.util.showError();
   };
 
   var init = function () {
