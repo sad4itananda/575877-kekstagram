@@ -62,7 +62,7 @@
       setTimeout(function () {
          errorEelement.classList.add('hidden')
       }, 2000);
-    };
+    }
   };
 
 })();
