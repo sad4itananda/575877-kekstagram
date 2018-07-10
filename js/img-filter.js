@@ -1,6 +1,10 @@
 'use strict';
 
 var imgFiltersForm = document.querySelector('form.img-filters__form');
+var templateSelector = document.querySelector('#picture').content.querySelector('a');
+var picturesSelector = document.querySelector('.pictures');
+var imgWrapper = document.querySelector('.img-upload');
+var newPhotosAmount = 10;
 
 var onImgFiltersFormClick = function (evt) {
   var photos = window.util.photos;
@@ -17,10 +21,14 @@ var onImgFiltersFormClick = function (evt) {
         }
         return 0;
       });
-      // console.log(sortPopularImg);
+      removeChildren(picturesSelector, imgWrapper);
+      window.renderPhotos(sortPopularImg);
       break;
     case 'filter-new':
       activeImgFilter(evt);
+      var newImg = sortNewImg (photos, newPhotosAmount);
+      removeChildren(picturesSelector, imgWrapper);
+      window.renderPhotos(newImg);
       break;
     case 'filter-discussed':
       activeImgFilter(evt);
@@ -33,7 +41,7 @@ var onImgFiltersFormClick = function (evt) {
         }
         return 0;
       });
-      // console.log(sortDiscussedImg);
+      removeChildren(picturesSelector, imgWrapper);
       break;
   }
 };
@@ -50,4 +58,34 @@ var activeImgFilter = function (evt) {
   }
 };
 
-// var sortNewImg = function (photos) {};
+var renderPhotos = function (array) {
+    for (var i = 0; i < array.length; i++) {
+      var element = templateSelector.cloneNode(true);
+      element.querySelector('.picture__stat--likes').textContent = array[i].likes;
+      element.querySelector('.picture__stat--comments').textContent = array[i].comments;
+      element.querySelector('img').src = array[i].url;
+      element.querySelector('img').setAttribute('data-id', i);
+      picturesSelector.appendChild(element);
+    }
+};
+
+var removeChildren = function (elem, nextElem) {
+  while (elem.lastChild !== nextElem) {
+    elem.removeChild(elem.lastChild);
+  }
+};
+
+var sortNewImg = function (array, amount ) {
+  var newArray = [];
+  while(newArray.length < amount) {
+    var num = getRandomInteger (0, array.length - 1);
+    if (newArray.length === 0 ) {
+      newArray.push(array[num]);
+    }
+    for (var i = 0, k = 0; i < newArray.length; i++) {
+      if (array[num] === newArray[i]) {k++};
+    } if (k===0){ newArray.push(array[num])};
+  }
+  return newArray;
+};
+

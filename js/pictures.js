@@ -9,7 +9,7 @@
     document.querySelector('.social__loadmore').classList.add('visually-hidden');
   };
 
-  var renderPhotos = function (array) {
+  window.renderPhotos = function (array) {
     for (var i = 0; i < array.length; i++) {
       var element = templateSelector.cloneNode(true);
       element.querySelector('.picture__stat--likes').textContent = array[i].likes;
@@ -40,3 +40,9 @@
 
   init();
 })();
+
+
+// --------
+
+
+
