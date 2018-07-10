@@ -44,7 +44,7 @@
         var parent = createElement('li', 'social__comment');
         parent.classList.add('social__comment--text');
         var childImg = createElement('img', 'social__picture');
-        childImg.src = 'img/avatar-' + getRandomInteger(1, 6) + '.svg';
+        childImg.src = 'img/avatar-' + window.getRandomInteger(1, 6) + '.svg';
         childImg.alt = 'Аватар комментатора фотографии';
         childImg.width = '35';
         childImg.height = '35';

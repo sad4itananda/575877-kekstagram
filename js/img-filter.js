@@ -42,7 +42,7 @@ var onImgFiltersFormClick = function (evt) {
         return 0;
       });
       removeChildren(picturesSelector, imgWrapper);
-       window.renderPhotos(sortDiscussedImg);
+      window.renderPhotos(sortDiscussedImg);
       break;
   }
 };
@@ -56,16 +56,6 @@ var activeImgFilter = function (evt) {
       list.remove('img-filters__button--active');
     }
     evt.target.classList.add('img-filters__button--active');
-  }
-};
-var renderPhotos = function (array) {
-  for (var i = 0; i < array.length; i++) {
-    var element = templateSelector.cloneNode(true);
-    element.querySelector('.picture__stat--likes').textContent = array[i].likes;
-    element.querySelector('.picture__stat--comments').textContent = array[i].comments;
-    element.querySelector('img').src = array[i].url;
-    element.querySelector('img').setAttribute('data-id', i);
-    picturesSelector.appendChild(element);
   }
 };
 
@@ -83,8 +73,12 @@ var sortNewImg = function (array, amount) {
       newArray.push(array[num]);
     }
     for (var i = 0, k = 0; i < newArray.length; i++) {
-      if (array[num] === newArray[i]) {k++};
-    } if (k===0){ newArray.push(array[num])};
+      if (array[num] === newArray[i]) {
+        k++
+      }
+    } if (k===0) {
+      newArray.push(array[num])
+    }
   }
   return newArray;
 };

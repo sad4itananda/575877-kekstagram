@@ -25,7 +25,7 @@
       data[i].index = i;
     }
     window.util.photos = data;
-    renderPhotos(data);
+    window.renderPhotos(data);
     hiddenElements();
     document.querySelector('.img-filters').classList.remove('img-filters--inactive');
   };
@@ -40,9 +40,3 @@
 
   init();
 })();
-
-
-// --------
-
-
-
