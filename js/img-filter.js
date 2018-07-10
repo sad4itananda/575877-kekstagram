@@ -1,7 +1,6 @@
 'use strict';
 
 var imgFiltersForm = document.querySelector('form.img-filters__form');
-var templateSelector = document.querySelector('#picture').content.querySelector('a');
 var picturesSelector = document.querySelector('.pictures');
 var imgWrapper = document.querySelector('.img-upload');
 var newPhotosAmount = 10;
@@ -68,16 +67,16 @@ var removeChildren = function (elem, nextElem) {
 var sortNewImg = function (array, amount) {
   var newArray = [];
   while (newArray.length < amount) {
-    var num = window.getRandomInteger (0, array.length - 1);
-    if (newArray.length === 0 ) {
+    var num = window.getRandomInteger(0, array.length - 1);
+    if (newArray.length === 0) {
       newArray.push(array[num]);
     }
     for (var i = 0, k = 0; i < newArray.length; i++) {
       if (array[num] === newArray[i]) {
-        k++
+        k++;
       }
-    } if (k===0) {
-      newArray.push(array[num])
+    } if (k === 0) {
+      newArray.push(array[num]);
     }
   }
   return newArray;
