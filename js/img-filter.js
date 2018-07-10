@@ -26,7 +26,7 @@ var onImgFiltersFormClick = function (evt) {
       break;
     case 'filter-new':
       activeImgFilter(evt);
-      var newImg = sortNewImg (photos, newPhotosAmount);
+      var newImg = sortNewImg(photos, newPhotosAmount);
       removeChildren(picturesSelector, imgWrapper);
       window.renderPhotos(newImg);
       break;
@@ -42,6 +42,7 @@ var onImgFiltersFormClick = function (evt) {
         return 0;
       });
       removeChildren(picturesSelector, imgWrapper);
+       window.renderPhotos(sortDiscussedImg);
       break;
   }
 };
@@ -57,16 +58,15 @@ var activeImgFilter = function (evt) {
     evt.target.classList.add('img-filters__button--active');
   }
 };
-
 var renderPhotos = function (array) {
-    for (var i = 0; i < array.length; i++) {
-      var element = templateSelector.cloneNode(true);
-      element.querySelector('.picture__stat--likes').textContent = array[i].likes;
-      element.querySelector('.picture__stat--comments').textContent = array[i].comments;
-      element.querySelector('img').src = array[i].url;
-      element.querySelector('img').setAttribute('data-id', i);
-      picturesSelector.appendChild(element);
-    }
+  for (var i = 0; i < array.length; i++) {
+    var element = templateSelector.cloneNode(true);
+    element.querySelector('.picture__stat--likes').textContent = array[i].likes;
+    element.querySelector('.picture__stat--comments').textContent = array[i].comments;
+    element.querySelector('img').src = array[i].url;
+    element.querySelector('img').setAttribute('data-id', i);
+    picturesSelector.appendChild(element);
+  }
 };
 
 var removeChildren = function (elem, nextElem) {
@@ -75,10 +75,10 @@ var removeChildren = function (elem, nextElem) {
   }
 };
 
-var sortNewImg = function (array, amount ) {
+var sortNewImg = function (array, amount) {
   var newArray = [];
-  while(newArray.length < amount) {
-    var num = getRandomInteger (0, array.length - 1);
+  while (newArray.length < amount) {
+    var num = window.getRandomInteger (0, array.length - 1);
     if (newArray.length === 0 ) {
       newArray.push(array[num]);
     }
