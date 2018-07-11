@@ -1,56 +1,38 @@
 'use strict';
 
-var imgFiltersForm = document.querySelector('form.img-filters__form');
+var imgFiltersFormSelector = document.querySelector('form.img-filters__form');
 var picturesSelector = document.querySelector('.pictures');
-var imgWrapper = document.querySelector('.img-upload');
+var imgWrapperSelector = document.querySelector('.img-upload');
 var newPhotosAmount = 10;
 
-var onImgFiltersFormClick = function (evt) {
+var onImgFiltersFormSelectorClick = function (evt) {
   var photos = window.util.photos;
 
   switch (evt.target.id) {
     case 'filter-popular':
       activeImgFilter(evt);
-      var sortPopularImg = photos.sort(function (a, b) {
-        if (a.index > b.index) {
-          return 1;
-        }
-        if (a.index < b.index) {
-          return -1;
-        }
-        return 0;
-      });
-      removeChildren(picturesSelector, imgWrapper);
-      window.renderPhotos(sortPopularImg);
+      var popularImg = sortPopularImg(photos);
+      removeChildren(picturesSelector, imgWrapperSelector);
+      window.renderPhotos(popularImg);
       break;
     case 'filter-new':
       activeImgFilter(evt);
       var newImg = sortNewImg(photos, newPhotosAmount);
-      removeChildren(picturesSelector, imgWrapper);
+      removeChildren(picturesSelector, imgWrapperSelector);
       window.renderPhotos(newImg);
       break;
     case 'filter-discussed':
       activeImgFilter(evt);
-      var sortDiscussedImg = photos.sort(function (a, b) {
-        if (a.comments.length > b.comments.length) {
-          return 1;
-        }
-        if (a.comments.length < b.comments.length) {
-          return -1;
-        }
-        return 0;
-      });
-      removeChildren(picturesSelector, imgWrapper);
-      window.renderPhotos(sortDiscussedImg);
+      var disscusedImg = sortDiscussedImg(photos);
+      removeChildren(picturesSelector, imgWrapperSelector);
+      window.renderPhotos(disscusedImg);
       break;
   }
 };
 
-imgFiltersForm.addEventListener('click', onImgFiltersFormClick);
-
 var activeImgFilter = function (evt) {
-  for (var i = 0; i < imgFiltersForm.children.length; i++) {
-    var list = imgFiltersForm.children[i].classList;
+  for (var i = 0; i < imgFiltersFormSelector.children.length; i++) {
+    var list = imgFiltersFormSelector.children[i].classList;
     if (list.length > 1) {
       list.remove('img-filters__button--active');
     }
@@ -62,6 +44,18 @@ var removeChildren = function (elem, nextElem) {
   while (elem.lastChild !== nextElem) {
     elem.removeChild(elem.lastChild);
   }
+};
+
+var sortPopularImg = function (array) {
+  return array.sort(function (a, b) {
+    if (a.index > b.index) {
+      return 1;
+    }
+    if (a.index < b.index) {
+      return -1;
+    }
+    return 0;
+  })
 };
 
 var sortNewImg = function (array, amount) {
@@ -82,3 +76,16 @@ var sortNewImg = function (array, amount) {
   return newArray;
 };
 
+var sortDiscussedImg = function (array) {
+  return  array.sort(function (a, b) {
+    if (a.comments.length > b.comments.length) {
+      return 1;
+    }
+    if (a.comments.length < b.comments.length) {
+      return -1;
+    }
+    return 0;
+  })
+};
+
+imgFiltersFormSelector.addEventListener('click', onImgFiltersFormSelectorClick);
