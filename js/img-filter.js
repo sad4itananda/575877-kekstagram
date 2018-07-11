@@ -55,7 +55,7 @@ var sortPopularImg = function (array) {
       return -1;
     }
     return 0;
-  })
+  });
 };
 
 var sortNewImg = function (array, amount) {
@@ -77,7 +77,7 @@ var sortNewImg = function (array, amount) {
 };
 
 var sortDiscussedImg = function (array) {
-  return  array.sort(function (a, b) {
+  return array.sort(function (a, b) {
     if (a.comments.length > b.comments.length) {
       return 1;
     }
@@ -85,7 +85,7 @@ var sortDiscussedImg = function (array) {
       return -1;
     }
     return 0;
-  })
+  });
 };
 
 imgFiltersFormSelector.addEventListener('click', onImgFiltersFormSelectorClick);
